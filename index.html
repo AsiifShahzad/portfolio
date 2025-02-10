@@ -1,63 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asif Shahzad - Data Analyst Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <h1>Asif Shahzad</h1>
-      <p>Data Analyst | Python | Power BI | SQL | EDA</p>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <a href="#" class="logo">Portfolio.</a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#certification">Certification</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>Hello! I'm Asif Shahzad, a data analyst passionate about uncovering insights from data to drive decisions. Skilled in Python, SQL, Power BI, and Excel, I specialize in creating impactful visualizations and solving business problems through data.</p>
+    <section id="home" class="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span>Asif Shahzad</span></h1>
+            <p>A passionate Data Analyst and aspiring Data Scientist.
+                I specialize in analyzing data to provide actionable insights, helping businesses 
+                make data-driven decisions. I have hands-on experience with Python, Power BI, SQL, 
+                and advanced machine learning techniques, including deep learning.</p>
+            
+            <!-- Social Links with Icons -->
+            <div class="social-links">
+                <a href="https://github.com/AsiifShahzad" target="_blank">
+                    <i class="bx bxl-github"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/asiifshahzad/" target="_blank">
+                    <i class="bx bxl-linkedin"></i> LinkedIn
+                </a>
+                <a href="#" target="_blank">
+                    <i class="bx bxl-gmail"></i> gmail
+                </a>
+            </div>
+            
+            <!-- Download Resume Button -->
+            <a href="#" class="btn" download>
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+<section id="services" class="services">
+    <h2>My <span>Services</span></h2>
+    <div class="services-container">
+        <div class="service-box">
+            <i class="bx bx-line-chart"></i>
+            <h3>Data Analytics</h3>
+            <p>Providing insights from data using Python, Power BI, and SQL.</p>
+        </div>
+        <div class="service-box">
+            <i class="bx bx-brain"></i>
+            <h3>Machine Learning</h3>
+            <p>Building predictive models using deep learning and AI.</p>
+        </div>
+        <div class="service-box">
+            <i class="bx bx-code"></i>
+            <h3>Web Development</h3>
+            <p>Creating full-stack MERN applications with modern UI/UX.</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <strong>Sales Dashboard:</strong> Analyzed sales data using Power BI to identify trends and opportunities. <a href="#">View Project</a>
-        </li>
-        <li>
-          <strong>Customer Churn Prediction:</strong> Built a machine learning model to predict customer churn using Python and scikit-learn. <a href="#">View Project</a>
-        </li>
-        <li>
-          <strong>Exploratory Data Analysis:</strong> Conducted EDA on Titanic and Stack Overflow datasets to uncover key patterns. <a href="#">View Project</a>
-        </li>
-      </ul>
-    </div>
-  </section>
+<section class="certifications">
+    <h2>Certifications</h2>
+    <div class="cert-container">
+        
+        <div class="cert-card">
+            <i class='bx bx-bar-chart-alt-2'></i>
+            <h3>Programming for Everybody</h3>
+            <p>University of Michigan • January  2024</p>
+        </div>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:asif.shahzad@example.com">asif.shahzad@example.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/asifshahzad">linkedin.com/in/asifshahzad</a></p>
-      <p>GitHub: <a href="https://github.com/asifshahzad">github.com/asifshahzad</a></p>
-    </div>
-  </section>
+        <div class="cert-card">
+            <i class='bx bx-line-chart'></i>
+            <h3>Python for Data Science, AI & Development</h3>
+            <p>IBM • October  2023</p>
+        </div>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Asif Shahzad. All rights reserved.</p>
+        <div class="cert-card">
+            <i class='bx bx-brain'></i>
+            <h3>Machine Learning with Python</h3>
+            <p>IBM • January  2025</p>
+        </div>
+
+        <div class="cert-card">
+            <i class='bx bx-data'></i>
+            <h3>Harnessing the Power of Data with Power BI</h3>
+            <p>Microsoft • January 2024</p>
+        </div>
+
+        <div class="cert-card">
+            <i class='bx bx-code-alt'></i>
+            <h3>Extract, Transform and Load Data in Power BI</h3>
+            <p>Microsoft • January 2024</p>
+        </div>
+
+        <div class="cert-card">
+            <i class='bx bx-line-chart-down'></i>
+            <h3>Introduction to Deep Learning & Neural Networks with Keras</h3>
+            <p>IBM • January 2025</p>
+        </div>
+        
+        <div class="cert-card">
+            <i class='bx bx-line-chart-down'></i>
+            <h3>Google AI Essentials</h3>
+            <p>Google • August  2024</p>
+        </div>
     </div>
-  </footer>
+</section>
+
 </body>
+
 </html>
+
