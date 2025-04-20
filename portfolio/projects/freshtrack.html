@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshTrack | Asif Shahzad</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+        background-color: rgba(32, 32, 32, 0.9); /* Set your background */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        }
+
+    /* Replace portfolio anchor with a button */
+        .back-home-btn {
+        display: inline-block;
+        margin: 40px auto 0;
+        padding: 12px 28px;
+        background-color: rgb(6, 160, 147);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        }
+
+        .back-home-btn:hover {
+        background-color: white;
+        color: rgb(6, 160, 147);
+        box-shadow: 0 8px 20px rgba(6, 160, 147, 0.4);
+        }
+
+        .project-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .project-header h1 {
+            font-size: 3rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 15px;
+        }
+        
+        .project-header p {
+            font-size: 1.3rem;
+            color: #ddd;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: rgb(6, 160, 147);
+        }
+        
+        .problem-statement {
+            background-color: rgba(6, 160, 147, 0.1);
+            border-left: 4px solid rgb(6, 160, 147);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+        
+        .problem-statement p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        
+        .objectives {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .objective-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(6, 160, 147, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .objective-card i {
+            font-size: 2.5rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 15px;
+        }
+        
+        .objective-card h3 {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .objective-card p {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.5;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: rgb(6, 160, 147);
+            transition: width 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.5;
+        }
+        
+        .tech-stack {
+            margin: 20px 0;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tech-item {
+            background-color: rgba(6, 160, 147, 0.1);
+            color: rgb(6, 160, 147);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tech-item:hover {
+            background-color: rgb(6, 160, 147);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(6, 160, 147, 0.3);
+        }
+        
+        .tech-item i {
+            font-size: 1.2rem;
+        }
+        
+        .project-link {
+            text-align: center;
+            margin: 40px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .try-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: rgb(6, 160, 147);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(6, 160, 147, 0.3);
+        }
+        
+        .try-btn:hover {
+            background-color: white;
+            color: rgb(6, 160, 147);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(6, 160, 147, 0.4);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: white;
+            color: rgb(6, 160, 147);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .objectives, .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-home-btn">Back to Home</a>
+        </div>
+        
+        
+    </header>
+
+    <div class="project-showcase">
+        <div class="project-header">
+            <h1>FreshTrack</h1>
+            <p>An intelligent food management application that helps you track expiry dates and reduce food waste with AI-powered recipe suggestions.</p>
+        </div>
+        
+        <div class="project-content">
+            <div class="project-section">
+                <h2 class="section-title">Problem Statement</h2>
+                <div class="problem-statement">
+                    <p>Food waste is a significant global issue, with approximately one-third of all food produced being wasted. A major contributor to household food waste is expired products that are forgotten in pantries and refrigerators. Additionally, consumers often struggle to utilize products before they expire, lacking inspiration for recipes that could incorporate these items.</p>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Objectives</h2>
+                <div class="objectives">
+                    <div class="objective-card">
+                        <i class='bx bx-time-five'></i>
+                        <h3>Reduce Food Waste</h3>
+                        <p>Help users track expiry dates of food items to ensure they're consumed before they expire, reducing household food waste.</p>
+                    </div>
+                    
+                    <div class="objective-card">
+                        <i class='bx bx-bell'></i>
+                        <h3>Timely Notifications</h3>
+                        <p>Provide proactive alerts when products are approaching their expiry date, giving users time to plan meals accordingly.</p>
+                    </div>
+                    
+                    <div class="objective-card">
+                        <i class='bx bx-dish'></i>
+                        <h3>Recipe Inspiration</h3>
+                        <p>Offer AI-powered recipe suggestions based on tracked items to help users creatively use products before they expire.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Key Features</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <i class='bx bx-camera'></i>
+                        <h3>Image Recognition</h3>
+                        <p>Add products by simply taking a photo. Our AI recognizes the product and automatically extracts expiry information.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class='bx bx-list-plus'></i>
+                        <h3>Manual Entry</h3>
+                        <p>Quickly add items manually with an intuitive interface for entering product details and expiry dates.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class='bx bx-notification'></i>
+                        <h3>Smart Alerts</h3>
+                        <p>Receive customizable notifications when products are approaching their expiry date, with adjustable timing preferences.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class='bx bx-chef'></i>
+                        <h3>Chef AI</h3>
+                        <p>Get personalized recipe suggestions based on your tracked items, dietary preferences, and cooking skill level.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class='bx bx-line-chart'></i>
+                        <h3>Waste Analytics</h3>
+                        <p>Track your progress in reducing food waste with insightful statistics and visualizations.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class='bx bx-cloud-sync'></i>
+                        <h3>Cross-Device Sync</h3>
+                        <p>Access your inventory from any device with seamless cloud synchronization.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Technologies Used</h2>
+                <div class="tech-stack">
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <i class='bx bx-message-square-dots'></i> HTML
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-message-square-dots'></i> CSS
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bxl-nodejs'></i> Node.js
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bxl-mongodb'></i> PostgreSQL
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bxl-firebase'></i> Firebase
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-cloud'></i> Hugging Face Api
+                        </div>
+                     
+                        <div class="tech-item">
+                            <i class='bx bx-camera'></i> Google Vision API
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-code-alt'></i> Express.js
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-link">
+                <a href="https://freshtrack.vercel.app" target="_blank" class="try-btn">
+                    <i class='bx bx-right-arrow-circle'></i> Try FreshTrack
+                </a>
+            </div>
+            
+            <a href="../index.html#projects" class="back-btn">
+                <i class='bx bx-arrow-back'></i> Back to Projects
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Asif Shahzad. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements when they come into view
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.objective-card, .feature-card, .tech-item');
+                
+                elements.forEach((element, index) => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        // Add staggered delay based on index
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        }, 100 * (index % 3));
+                    }
+                });
+            };
+            
+            // Set initial styles for animation
+            const elementsToAnimate = document.querySelectorAll('.objective-card, .feature-card, .tech-item');
+            elementsToAnimate.forEach((element) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Call once on load
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
