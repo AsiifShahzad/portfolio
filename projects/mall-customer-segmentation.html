@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mall Customer Segmentation | Asif Shahzad</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            background-color: rgba(32, 32, 32, 0.9); /* Set your background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Replace portfolio anchor with a button */
+        .back-home-btn {
+            display: inline-block;
+            margin: 40px auto 0;
+            padding: 12px 28px;
+            background-color: rgb(6, 160, 147);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .back-home-btn:hover {
+            background-color: white;
+            color: rgb(6, 160, 147);
+            box-shadow: 0 8px 20px rgba(6, 160, 147, 0.4);
+        }
+        
+        .project-showcase {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .project-header h1 {
+            font-size: 3rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 15px;
+        }
+        
+        .project-header p {
+            font-size: 1.3rem;
+            color: #ddd;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: rgb(6, 160, 147);
+        }
+        
+        .overview-box {
+            background-color: rgba(6, 160, 147, 0.1);
+            border-left: 4px solid rgb(6, 160, 147);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+        
+        .overview-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        
+        .dataset-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .dataset-feature {
+            background-color: rgba(6, 160, 147, 0.1);
+            color: #ddd;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dataset-feature:hover {
+            background-color: rgba(6, 160, 147, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .dataset-feature i {
+            color: rgb(6, 160, 147);
+            font-size: 1.2rem;
+        }
+        
+        .methodology-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .method-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .method-step:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            background-color: rgb(6, 160, 147);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.5;
+        }
+        
+        .visualization-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .visualization-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .visualization-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .visualization-title {
+            font-size: 1.3rem;
+            color: rgb(6, 160, 147);
+            text-align: center;
+        }
+        
+        .visualization-description {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .insights-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .insight-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: rgb(6, 160, 147);
+            transition: width 0.3s ease;
+        }
+        
+        .insight-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .insight-card i {
+            font-size: 2.5rem;
+            color: rgb(6, 160, 147);
+            margin-bottom: 15px;
+        }
+        
+        .insight-card h3 {
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .insight-card p {
+            font-size: 1rem;
+            color: #ddd;
+            line-height: 1.5;
+        }
+        
+        .tech-stack {
+            margin: 20px 0;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tech-item {
+            background-color: rgba(6, 160, 147, 0.1);
+            color: rgb(6, 160, 147);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tech-item:hover {
+            background-color: rgb(6, 160, 147);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(6, 160, 147, 0.3);
+        }
+        
+        .tech-item i {
+            font-size: 1.2rem;
+        }
+        
+        .project-link {
+            text-align: center;
+            margin: 40px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .github-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: rgb(6, 160, 147);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(6, 160, 147, 0.3);
+        }
+        
+        .github-btn:hover {
+            background-color: white;
+            color: rgb(6, 160, 147);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(6, 160, 147, 0.4);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: white;
+            color: rgb(6, 160, 147);
+        }
+        
+        /* Static Chart Styles */
+        .static-chart {
+            height: 300px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .bar-chart.horizontal {
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+        
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            flex: 1;
+        }
+        
+        .bar-chart.horizontal .bar-item {
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+            margin: 8px 0;
+        }
+        
+        .bar-label {
+            margin-bottom: 5px;
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+        
+        .bar-chart.horizontal .bar-label {
+            margin-bottom: 0;
+            margin-right: 10px;
+            width: 50px;
+            text-align: right;
+        }
+        
+        .bar-container {
+            width: 40px;
+            height: 80%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-chart.horizontal .bar-container {
+            width: 70%;
+            height: 25px;
+        }
+        
+        .bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(6, 160, 147);
+            border-radius: 4px 4px 0 0;
+            transition: height 1s ease-out;
+        }
+        
+        .bar-chart.horizontal .bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px 0 0 4px;
+            transition: width 1s ease-out;
+        }
+        
+        .bar-value {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+        
+        .bar-chart.horizontal .bar-value {
+            margin-top: 0;
+            margin-left: 10px;
+        }
+        
+        /* Pie Chart Styles */
+        .pie-chart {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .pie-segment {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: 50% 50%;
+            transition: transform 1s ease-out;
+        }
+        
+        .pie-segment.female {
+            background-color: rgba(255, 99, 132, 0.7);
+            clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 50% 100%);
+            transform: rotate(calc(360deg * (1 - var(--percentage) / 100)));
+        }
+        
+        .pie-segment.male {
+            background-color: rgba(54, 162, 235, 0.7);
+            clip-path: polygon(50% 50%, 50% 0%, 0% 0%, 0% 100%, 50% 100%);
+        }
+        
+        .pie-legend {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+        
+        .female-color {
+            background-color: rgba(255, 99, 132, 0.7);
+        }
+        
+        .male-color {
+            background-color: rgba(54, 162, 235, 0.7);
+        }
+        
+        .legend-label {
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+        
+        /* Elbow Chart Styles */
+        .elbow-chart {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+        
+        .elbow-point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(6, 160, 147);
+            border-radius: 50%;
+            top: calc(var(--y) - 5px);
+            left: calc(var(--x) - 5px);
+        }
+        
+        .elbow-point.highlight {
+            width: 14px;
+            height: 14px;
+            top: calc(var(--y) - 7px);
+            left: calc(var(--x) - 7px);
+            background-color: rgba(255, 99, 132, 0.9);
+            box-shadow: 0 0 10px rgba(255, 99, 132, 0.7);
+        }
+        
+        .elbow-point::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+        
+        .elbow-line {
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background-color: rgba(6, 160, 147, 0.5);
+            top: 20%;
+            left: 10%;
+            clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+            transform: rotate(-45deg) translateY(120px);
+        }
+        
+        /* Cluster Visualization Styles */
+        .cluster-visualization {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+        }
+        
+        .cluster {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .cluster:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        
+        #cluster1 {
+            background-color: rgba(255, 99, 132, 0.7);
+            top: 20%;
+            right: 20%;
+        }
+        
+        #cluster2 {
+            background-color: rgba(54, 162, 235, 0.7);
+            bottom: 20%;
+            right: 20%;
+        }
+        
+        #cluster3 {
+            background-color: rgba(255, 206, 86, 0.7);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+        }
+        
+        #cluster4 {
+            background-color: rgba(75, 192, 192, 0.7);
+            top: 20%;
+            left: 20%;
+        }
+        
+        #cluster5 {
+            background-color: rgba(153, 102, 255, 0.7);
+            bottom: 20%;
+            left: 20%;
+        }
+        
+        .cluster-label {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+        
+        .cluster-description {
+            position: absolute;
+            top: 70px;
+            width: 120px;
+            font-size: 0.7rem;
+            color: #ddd;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cluster:hover .cluster-description {
+            opacity: 1;
+        }
+        
+        /* Quadrant Chart Styles */
+        .quadrant-chart {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 2px;
+        }
+        
+        .quadrant {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        
+        .quadrant-label {
+            font-size: 0.7rem;
+            color: #ddd;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .data-points {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .data-point {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: rgb(6, 160, 147);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        
+        #q1 .data-points .data-point:nth-child(1) { top: 30%; left: 70%; }
+        #q1 .data-points .data-point:nth-child(2) { top: 20%; left: 60%; }
+        #q1 .data-points .data-point:nth-child(3) { top: 40%; left: 80%; }
+        #q1 .data-points .data-point:nth-child(4) { top: 25%; left: 75%; }
+        #q1 .data-points .data-point:nth-child(5) { top: 35%; left: 65%; }
+        
+        #q2 .data-points .data-point:nth-child(1) { top: 30%; left: 30%; }
+        #q2 .data-points .data-point:nth-child(2) { top: 20%; left: 40%; }
+        #q2 .data-points .data-point:nth-child(3) { top: 40%; left: 20%; }
+        #q2 .data-points .data-point:nth-child(4) { top: 25%; left: 25%; }
+        #q2 .data-points .data-point:nth-child(5) { top: 35%; left: 35%; }
+        
+        #q3 .data-points .data-point:nth-child(1) { top: 70%; left: 30%; }
+        #q3 .data-points .data-point:nth-child(2) { top: 80%; left: 40%; }
+        #q3 .data-points .data-point:nth-child(3) { top: 60%; left: 20%; }
+        #q3 .data-points .data-point:nth-child(4) { top: 75%; left: 25%; }
+        #q3 .data-points .data-point:nth-child(5) { top: 65%; left: 35%; }
+        
+        #q4 .data-points .data-point:nth-child(1) { top: 70%; left: 70%; }
+        #q4 .data-points .data-point:nth-child(2) { top: 80%; left: 60%; }
+        #q4 .data-points .data-point:nth-child(3) { top: 60%; left: 80%; }
+        #q4 .data-points .data-point:nth-child(4) { top: 75%; left: 75%; }
+        #q4 .data-points .data-point:nth-child(5) { top: 65%; left: 65%; }
+        
+        /* Axis Labels */
+        .axis-labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .x-axis-label {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 0.7rem;
+            color: #ddd;
+        }
+        
+        .y-axis-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            color: #ddd;
+        }
+        
+        /* Animation for bars on page load */
+        @keyframes growBar {
+            from { height: 0; width: 0; }
+            to { height: var(--height); width: var(--width); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Make the visualizations responsive */
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .method-step {
+                flex-direction: column;
+            }
+            
+            .visualization-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .static-chart {
+                height: 250px;
+            }
+            
+            .bar-container {
+                width: 30px;
+            }
+            
+            .pie-chart {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .cluster {
+                width: 50px;
+                height: 50px;
+            }
+            
+            #cluster3 {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="text-align: center;">
+            <a href="../index.html" class="back-home-btn">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="project-showcase">
+        <div class="project-header">
+            <h1>Mall Customer Segmentation</h1>
+            <p>A data-driven approach to identify distinct customer groups based on purchasing behaviors and demographic information, enabling targeted marketing strategies.</p>
+        </div>
+        
+        <div class="project-content">
+            <div class="project-section">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="overview-box">
+                    <p>This project performs customer segmentation analysis on the Mall Customers dataset from Kaggle. By applying unsupervised machine learning techniques, we identify natural groupings of customers with similar characteristics and behaviors.</p>
+                   </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Dataset</h2>
+                <p>The Mall Customers dataset from Kaggle contains information about customers visiting a shopping mall, including demographic details and a spending score that reflects their purchasing behavior.</p>
+                
+                <div class="dataset-features">
+                    <div class="dataset-feature">
+                        <i class='bx bx-id-card'></i> Customer ID
+                    </div>
+                    <div class="dataset-feature">
+                        <i class='bx bx-male-female'></i> Gender
+                    </div>
+                    <div class="dataset-feature">
+                        <i class='bx bx-user'></i> Age
+                    </div>
+                    <div class="dataset-feature">
+                        <i class='bx bx-money'></i> Annual Income (k$)
+                    </div>
+                    <div class="dataset-feature">
+                        <i class='bx bx-shopping-bag'></i> Spending Score (1-100)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Methodology</h2>
+                <div class="methodology-steps">
+                    <div class="method-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Data Preprocessing & Exploration</h3>
+                            <p>The first step involved cleaning the dataset, handling missing values, and performing exploratory data analysis to understand the distribution of features and identify potential patterns. This included analyzing the demographic profile of customers and their spending behaviors.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="method-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Feature Analysis & Correlation</h3>
+                            <p>We analyzed the relationships between different features using correlation matrices and visualizations. This helped us understand how factors like age, income, and gender relate to spending patterns, providing initial insights into customer behavior.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="method-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Determining Optimal Clusters</h3>
+                            <p>Using the Elbow Method and Silhouette Analysis, we determined the optimal number of clusters for our segmentation. This step is crucial for ensuring that our customer segments are distinct and meaningful.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="method-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>K-Means Clustering</h3>
+                            <p>We applied the K-Means clustering algorithm to segment customers based on their annual income and spending score. This unsupervised learning technique grouped customers with similar characteristics together, revealing natural patterns in the data.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="method-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Visualization & Interpretation</h3>
+                            <p>The final step involved visualizing the customer segments and interpreting the results. We created various plots to represent the clusters and analyzed the characteristics of each segment to derive actionable insights for targeted marketing strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Visualizations & Insights</h2>
+                
+                <div class="visualization-container">
+                    <div class="visualization-card">
+                        <h3 class="visualization-title">Age Distribution</h3>
+                        <div class="static-chart">
+                            <div class="bar-chart">
+                                <div class="bar-item">
+                                    <div class="bar-label">18-24</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="height: 60%;"></div>
+                                    </div>
+                                    <div class="bar-value">24%</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">25-34</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="height: 95%;"></div>
+                                    </div>
+                                    <div class="bar-value">38%</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">35-44</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="height: 100%;"></div>
+                                    </div>
+                                    <div class="bar-value">42%</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">45-54</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="height: 70%;"></div>
+                                    </div>
+                                    <div class="bar-value">28%</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">55-64</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="height: 38%;"></div>
+                                    </div>
+                                    <div class="bar-value">15%</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">65+</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="height: 8%;"></div>
+                                    </div>
+                                    <div class="bar-value">3%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="visualization-description">Distribution of customer ages shows a concentration in the 25-45 age range, with a median age of 36.</p>
+                    </div>
+                    
+                    <div class="visualization-card">
+                        <h3 class="visualization-title">Income vs. Spending Relationship</h3>
+                        <div class="static-chart">
+                            <div class="quadrant-chart">
+                                <div class="quadrant" id="q1">
+                                    <div class="quadrant-label">High Income<br>High Spending</div>
+                                    <div class="data-points">
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                    </div>
+                                </div>
+                                <div class="quadrant" id="q2">
+                                    <div class="quadrant-label">Low Income<br>High Spending</div>
+                                    <div class="data-points">
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                    </div>
+                                </div>
+                                <div class="quadrant" id="q3">
+                                    <div class="quadrant-label">Low Income<br>Low Spending</div>
+                                    <div class="data-points">
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                    </div>
+                                </div>
+                                <div class="quadrant" id="q4">
+                                    <div class="quadrant-label">High Income<br>Low Spending</div>
+                                    <div class="data-points">
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                        <span class="data-point"></span>
+                                    </div>
+                                </div>
+                                <div class="axis-labels">
+                                    <div class="x-axis-label">Annual Income →</div>
+                                    <div class="y-axis-label">← Spending Score</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="visualization-description">Customers form distinct clusters in the four quadrants based on income and spending patterns.</p>
+                    </div>
+                    
+                    <div class="visualization-card">
+                        <h3 class="visualization-title">Gender Distribution</h3>
+                        <div class="static-chart">
+                            <div class="pie-chart">
+                                <div class="pie-segment female" style="--percentage: 56%;"></div>
+                                <div class="pie-segment male" style="--percentage: 44%;"></div>
+                                <div class="pie-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color female-color"></span>
+                                        <span class="legend-label">Female (56%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color male-color"></span>
+                                        <span class="legend-label">Male (44%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="visualization-description">The customer base has more female shoppers (56%) compared to male shoppers (44%).</p>
+                    </div>
+                    
+                    <div class="visualization-card">
+                        <h3 class="visualization-title">Optimal Number of Clusters</h3>
+                        <div class="static-chart">
+                            <div class="elbow-chart">
+                                <div class="elbow-point" style="--x: 10%; --y: 90%;" data-label="1"></div>
+                                <div class="elbow-point" style="--x: 20%; --y: 60%;" data-label="2"></div>
+                                <div class="elbow-point" style="--x: 30%; --y: 40%;" data-label="3"></div>
+                                <div class="elbow-point" style="--x: 40%; --y: 30%;" data-label="4"></div>
+                                <div class="elbow-point highlight" style="--x: 50%; --y: 20%;" data-label="5"></div>
+                                <div class="elbow-point" style="--x: 60%; --y: 18%;" data-label="6"></div>
+                                <div class="elbow-point" style="--x: 70%; --y: 16%;" data-label="7"></div>
+                                <div class="elbow-point" style="--x: 80%; --y: 14%;" data-label="8"></div>
+                                <div class="elbow-point" style="--x: 90%; --y: 12%;" data-label="9"></div>
+                                <div class="elbow-line"></div>
+                                <div class="axis-labels">
+                                    <div class="x-axis-label">Number of Clusters →</div>
+                                    <div class="y-axis-label">← WCSS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="visualization-description">The Elbow Method shows that 5 is the optimal number of clusters, as the rate of WCSS decrease slows significantly after this point.</p>
+                    </div>
+                    
+                    <div class="visualization-card">
+                        <h3 class="visualization-title">Customer Segments (K-Means)</h3>
+                        <div class="static-chart">
+                            <div class="cluster-visualization">
+                                <div class="cluster" id="cluster1">
+                                    <div class="cluster-label">Cluster 1</div>
+                                    <div class="cluster-description">High Income, High Spending</div>
+                                </div>
+                                <div class="cluster" id="cluster2">
+                                    <div class="cluster-label">Cluster 2</div>
+                                    <div class="cluster-description">High Income, Low Spending</div>
+                                </div>
+                                <div class="cluster" id="cluster3">
+                                    <div class="cluster-label">Cluster 3</div>
+                                    <div class="cluster-description">Average Income & Spending</div>
+                                </div>
+                                <div class="cluster" id="cluster4">
+                                    <div class="cluster-label">Cluster 4</div>
+                                    <div class="cluster-description">Low Income, High Spending</div>
+                                </div>
+                                <div class="cluster" id="cluster5">
+                                    <div class="cluster-label">Cluster 5</div>
+                                    <div class="cluster-description">Low Income, Low Spending</div>
+                                </div>
+                                <div class="axis-labels">
+                                    <div class="x-axis-label">Annual Income →</div>
+                                    <div class="y-axis-label">← Spending Score</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="visualization-description">K-Means clustering identified 5 distinct customer segments based on annual income and spending score.</p>
+                    </div>
+                    
+                    <div class="visualization-card">
+                        <h3 class="visualization-title">Spending Score by Age Group</h3>
+                        <div class="static-chart">
+                            <div class="bar-chart horizontal">
+                                <div class="bar-item">
+                                    <div class="bar-label">18-24</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 65%;"></div>
+                                    </div>
+                                    <div class="bar-value">65</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">25-34</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 58%;"></div>
+                                    </div>
+                                    <div class="bar-value">58</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">35-44</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 52%;"></div>
+                                    </div>
+                                    <div class="bar-value">52</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">45-54</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 47%;"></div>
+                                    </div>
+                                    <div class="bar-value">47</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">55-64</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 42%;"></div>
+                                    </div>
+                                    <div class="bar-value">42</div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label">65+</div>
+                                    <div class="bar-container">
+                                        <div class="bar" style="width: 38%;"></div>
+                                    </div>
+                                    <div class="bar-value">38</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="visualization-description">Average spending score decreases with age, with younger customers showing higher spending tendencies.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Key Insights</h2>
+                <div class="insights-container">
+                    <div class="insight-card">
+                        <i class='bx bx-target-lock'></i>
+                        <h3>High Income, High Spenders</h3>
+                        <p>Cluster 1 represents customers with high income and high spending scores. This premium segment is ideal for luxury product marketing and premium services.</p>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <i class='bx bx-money-withdraw'></i>
+                        <h3>High Income, Low Spenders</h3>
+                        <p>Cluster 2 includes customers with high income but low spending scores. This segment has high potential and could be targeted with loyalty programs and exclusive offers.</p>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <i class='bx bx-shopping-bag'></i>
+                        <h3>Average Income & Spending</h3>
+                        <p>Cluster 3 represents the average customers with moderate income and spending. This is the largest segment and should be the focus of general marketing campaigns.</p>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <i class='bx bx-dollar-circle'></i>
+                        <h3>Low Income, High Spenders</h3>
+                        <p>Cluster 4 includes customers with low income but high spending scores. This segment is price-sensitive but values shopping experiences, making them ideal for sales and promotions.</p>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <i class='bx bx-trending-down'></i>
+                        <h3>Low Income, Low Spenders</h3>
+                        <p>Cluster 5 represents customers with low income and low spending scores. This segment requires budget-friendly options and value-based marketing approaches.</p>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <i class='bx bx-female'></i>
+                        <h3>Gender-Based Insights</h3>
+                        <p>Female customers have a slightly higher average spending score (51.5) compared to male customers (48.8), suggesting gender-specific marketing strategies could be effective.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-section">
+                <h2 class="section-title">Technologies Used</h2>
+                <div class="tech-stack">
+                    <div class="tech-list">
+                        <div class="tech-item">
+                            <i class='bx bxl-python'></i> Python
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-data'></i> Pandas
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-line-chart'></i> NumPy
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-scatter-chart'></i> Matplotlib
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-bar-chart-alt-2'></i> Seaborn
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-brain'></i> Scikit-learn
+                        </div>
+                        <div class="tech-item">
+                            <i class='bx bx-code-block'></i> Jupyter Notebook
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-link">
+                <a href="https://github.com/AsiifShahzad/mall-customer-segmentation" target="_blank" class="github-btn">
+                    <i class='bx bxl-github'></i> View on GitHub
+                </a>
+            </div>
+            
+            <a href="../index.html#projects" class="back-btn">
+                <i class='bx bx-arrow-back'></i> Back to Projects
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Asif Shahzad. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate bars when they come into view
+            const animateVisualizations = () => {
+                // Animate vertical bars
+                document.querySelectorAll('.bar-chart:not(.horizontal) .bar').forEach(bar => {
+                    const height = bar.style.height;
+                    bar.style.height = '0';
+                    setTimeout(() => {
+                        bar.style.height = height;
+                    }, 100);
+                });
+                
+                // Animate horizontal bars
+                document.querySelectorAll('.bar-chart.horizontal .bar').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            };
+            
+            // Call once on load
+            animateVisualizations();
+            
+            // Add scroll event listener to animate when elements come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // If the visualization card is in view, animate its bars
+                        const bars = entry.target.querySelectorAll('.bar');
+                        bars.forEach(bar => {
+                            if (bar.parentElement.parentElement.parentElement.classList.contains('horizontal')) {
+                                const width = bar.style.width;
+                                bar.style.width = '0';
+                                setTimeout(() => {
+                                    bar.style.width = width;
+                                }, 100);
+                            } else {
+                                const height = bar.style.height;
+                                bar.style.height = '0';
+                                setTimeout(() => {
+                                    bar.style.height = height;
+                                }, 100);
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe all visualization cards
+            document.querySelectorAll('.visualization-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Animate elements when they come into view
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.insight-card, .method-step, .tech-item');
+                
+                elements.forEach((element, index) => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        // Add staggered delay based on index
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = element.classList.contains('method-step') 
+                                ? 'translateX(0)' 
+                                : 'translateY(0)';
+                        }, 100 * (index % 3));
+                    }
+                });
+            };
+            
+            // Set initial styles for animation
+            const elementsToAnimate = document.querySelectorAll('.insight-card, .method-step, .tech-item');
+            elementsToAnimate.forEach((element) => {
+                element.style.opacity = '0';
+                if (element.classList.contains('method-step')) {
+                    element.style.transform = 'translateX(-20px)';
+                } else {
+                    element.style.transform = 'translateY(20px)';
+                }
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Call once on load
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
