@@ -245,83 +245,48 @@ section h2 span {
 }
 
 /* Projects Section */
-.projects {
-  background-color: rgb(54, 53, 53);
-  padding: 80px 5%;
-  text-align: center;
-}
-
-.projects h2 {
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Projects Container */
 .projects-container {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 40px;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
 }
 
-/* Individual Project Box */
-.project-box {
-  background-color: rgb(99, 97, 97);
+.project-item {
+  width: 100%;
+  background: #2e2e2e;
+  color: #f5f5f5;
   padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  width: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* Project Icon */
-.project-box i {
-  font-size: 3rem;
-  color: rgb(6, 160, 147);
+.project-item h2 {
   margin-bottom: 15px;
+  color: #00e0a8;
 }
 
-/* Project Title */
-.project-box h3 {
-  font-size: 1.8rem;
-  color: white;
-  margin-bottom: 10px;
-}
-
-/* Project Description */
-.project-box p {
-  font-size: 1.1rem;
-  color: #ccc;
+.project-item p {
+  margin: 10px 0;
   line-height: 1.6;
-  margin-bottom: 20px;
 }
 
-/* Project Link */
 .project-link {
   display: inline-block;
-  padding: 8px 15px;
-  background-color: rgb(6, 160, 147);
-  color: white;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #00e0a8;
+  color: #1c1c1c;
+  border-radius: 6px;
   text-decoration: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
 
 .project-link:hover {
-  background-color: white;
-  color: rgb(6, 160, 147);
+  background: #00c58a;
 }
 
-/* Hover Effect */
-.project-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(2, 255, 255, 0.3);
-}
 
 /* Services Section */
 .services {
@@ -603,3 +568,5 @@ footer {
     margin: 0 5px;
   }
 }
+
+
