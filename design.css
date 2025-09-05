@@ -244,84 +244,7 @@ section h2 span {
   font-size: 1.2rem;
 }
 
-/* Projects Section */
-.projects {
-  background-color: rgb(54, 53, 53);
-  padding: 80px 5%;
-  text-align: center;
-}
 
-.projects h2 {
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Projects Container */
-.projects-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 40px;
-}
-
-/* Individual Project Box */
-.project-box {
-  background-color: rgb(99, 97, 97);
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  width: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Project Icon */
-.project-box i {
-  font-size: 3rem;
-  color: rgb(6, 160, 147);
-  margin-bottom: 15px;
-}
-
-/* Project Title */
-.project-box h3 {
-  font-size: 1.8rem;
-  color: white;
-  margin-bottom: 10px;
-}
-
-/* Project Description */
-.project-box p {
-  font-size: 1.1rem;
-  color: #ccc;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-/* Project Link */
-.project-link {
-  display: inline-block;
-  padding: 8px 15px;
-  background-color: rgb(6, 160, 147);
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.project-link:hover {
-  background-color: white;
-  color: rgb(6, 160, 147);
-}
-
-/* Hover Effect */
-.project-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(2, 255, 255, 0.3);
-}
 
 /* Services Section */
 .services {
@@ -381,6 +304,137 @@ section h2 span {
   transform: translateY(-8px);
   box-shadow: 0 0 25px rgba(2, 255, 255, 0.3);
 }
+
+.projects {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.projects h2 span {
+    color:  rgba(2, 255, 255, 0.3);
+    background: linear-gradient(45deg, rgba(2, 255, 255, 0.3), rgba(2, 255, 255, 0.3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%,  rgba(255, 255, 255, 0.05) 100%);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+}
+
+
+.project-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: rgb(6, 160, 147);
+}
+
+.project-item p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+
+.project-item p strong {
+    color: #00d4ff;
+    font-weight: 600;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #00d4ff, #0099cc);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.project-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}
+
+.project-link:hover::before {
+    left: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects {
+        padding: 60px 15px;
+    }
+
+    .projects h2 {
+        font-size: 2rem;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .project-item {
+        padding: 25px;
+    }
+
+    .project-item h2 {
+        font-size: 1.3rem;
+    }
+
+    .project-item p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-item {
+        padding: 20px;
+    }
+
+    .project-link {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
 
 /* Certifications Section */
 .certifications {
@@ -669,3 +723,4 @@ footer {
     font-size: 0.95rem;
     color: #ddd;
 }
+
