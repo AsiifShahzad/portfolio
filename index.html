@@ -10,265 +10,120 @@
 </head>
 
 <body>
-    <header>
+    <!-- Header -->
+    <header class="header">
         <a href="#" class="logo">Portfolio.</a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
         <nav class="navbar">
-            <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#certification">Certification</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#certification">Certification</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <section id="home" class="home">
+    <!-- Home Section -->
+    <section class="home" id="home">
         <div class="home-content">
-            <h1>Hi, I'm <span>Asif Shahzad</span></h1>
-            <p>A passionate Data Analyst, Data Scientist and aspiring Web Developer.
-            </p>
-            
-            <!-- Social Links with Icons -->
-            <div class="social-links">
-                <a href="https://github.com/AsiifShahzad" target="_blank">
-                    <i class="bx bxl-github"></i> GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/asiifshahzad/" target="_blank">
-                    <i class="bx bxl-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shahzadasif041@gmail.com" target="_blank">
-                    <i class="bx bxl-gmail"></i> Gmail
-                </a>
-                
-            </div>
-            
-            <!-- Download Resume Button -->
-            <a href="AsifShahzadAi.pdf" target="_blank" class="btn">
-            <i class="bx bx-download"></i> Download Resume
-            </a>
+            <h3>Hello, It's Me</h3>
+            <h1>Asif Shahzad</h1>
+            <h3>And I'm a <span>Data Scientist</span></h3>
+            <p>A passionate Data Analyst, Data Scientist and aspiring Web Developer. Skilled in transforming complex
+                data into meaningful insights and building responsive, interactive web applications.</p>
 
+            <div class="social-media">
+                <a href="https://github.com/AsiifShahzad" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://www.linkedin.com/in/asiifshahzad/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="mailto:shahzadasif041@gmail.com"><i class='bx bxl-gmail'></i></a>
+            </div>
+
+            <a href="AsifShahzadAi.pdf" class="btn" target="_blank" download>Download CV</a>
         </div>
     </section>
-    
+
     <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About <span>Me</span></h2>
+    <section class="about" id="about">
+        <!-- Optional Image Here -->
         <div class="about-content">
-            <div class="about-text">
-                <p>A passionate and results-driven tech enthusiast with hands-on experience in data analytics, data science, and web development. Skilled in transforming complex data into meaningful insights and building responsive, interactive web applications to solve real-world problems.</p>
-                
-                <h3>My Skills</h3>
-                <div class="skills">
-                    <div class="skill-category">
-                        <h4>Frontend Development</h4>
-                        <div class="skill-items">
-                            <div class="skill-item"><i class='bx bxl-html5'></i> HTML</div>
-                            <div class="skill-item"><i class='bx bxl-css3'></i> CSS</div>
-                            <div class="skill-item"><i class='bx bxl-javascript'></i> JavaScript</div>
-                            <div class="skill-item"><i class='bx bxl-react'></i> React</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>Backend Development</h4>
-                        <div class="skill-items">
-                            <div class="skill-item"><i class='bx bxl-nodejs'></i> Node.js</div>
-                            <div class="skill-item"><i class='bx bxl-python'></i> Python</div>
-                            <div class="skill-item"><i class='bx bx-data'></i> SQL</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h4>Data Science</h4>
-                        <div class="skill-items">
-                            <div class="skill-item"><i class='bx bx-line-chart'></i> Data Analysis</div>
-                            <div class="skill-item"><i class='bx bx-brain'></i> Machine Learning</div>
-                            <div class="skill-item"><i class='bx bx-bar-chart-alt-2'></i> Data Visualization</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Data Scientist & Web Developer</h3>
+            <p>A passionate and results-driven tech enthusiast with hands-on experience in data analytics, data science,
+                and web development. Skilled in transforming complex data into meaningful insights and building
+                responsive, interactive web applications to solve real-world problems.</p>
+            <!-- Skills could be rendered dynamically or static here, keeping static for simplicity in about currently, or could move to dynamic -->
         </div>
     </section>
-    
-    <!-- Projects Section -->
-
-    <!-- Projects Section -->
-<section id="projects" class="projects">
-  <h2>My <span>Projects</span></h2>
-
-  <div class="projects-container">
-
-    <div class="project-item">
-      <h2>Chef Ai</h2>
-      <p><strong>Problem Statement:</strong> Many people struggle with deciding what to cook using the limited ingredients they have at home. This often leads to food waste or repetitive meals.</p>
-      <p><strong>Solution:</strong> Chef Ai takes user-provided ingredients and instantly recommends recipe ideas, helping users save time, reduce waste, and try new dishes.</p>
-      <p><strong>Tools & Technologies:</strong> React.js, Node.js, Hugging Face Model, CSS</p>
-      <a href="https://radiant-sopapillas-9ee167.netlify.app/" target="_blank" class="project-link">🔗 Check Project</a>
-    </div>
-
-    <!-- Project 1: FreshTrack -->
-    <div class="project-item">
-      <h2>FreshTrack</h2>
-      <p><strong>Problem:</strong> Food waste is a significant global issue, with approximately one-third of all food produced being wasted.</p>
-      <p><strong>Solution:</strong> An intelligent food management app that tracks expiry dates, sends timely notifications, and suggests recipes to reduce waste.</p>
-      <p><strong>Tools & Technologies:</strong> HTML, CSS, Node.js, PostgreSQL, Firebase, Hugging Face API, Google Vision API, Express.js</p>
-      
-      <a href="https://github.com/AsiifShahzad/FreshTrackAi" target="_blank" class="project-link">🔗 Check Project</a>
-    </div>
-
-    <!-- Project 2: Movie Hit Prediction -->
-    <div class="project-item">
-      <h2>Movie Hit Prediction</h2>
-      <p><strong>Problem:</strong> Studios risk heavy losses by producing movies without reliable demand predictions.</p>
-      <p><strong>Solution:</strong> A machine learning model that predicts whether a movie will be a hit or flop based on factors such as budget, cast, and genre.</p>
-      <p><strong>Tools & Technologies:</strong> Python, Pandas, Scikit-Learn, Matplotlib</p>
-      
-      <a href="https://github.com/AsiifShahzad/AI-Movie-Hit-Predictor" class="project-link">🔗 Check Project</a>
-    </div>
-
-    <!-- Project 3: Customer Segmentation -->
-    <div class="project-item">
-      <h2>Customer Segmentation</h2>
-      <p><strong>Problem:</strong> Businesses struggle to target different customer groups effectively, leading to inefficient marketing strategies.</p>
-      <p><strong>Solution:</strong> An interactive dashboard built with D3.js that segments customers into groups and provides filtering options for deeper insights.</p>
-      <p><strong>Tools & Technologies:</strong> D3.js, JavaScript, HTML, CSS</p>
-      <a href="https://github.com/AsiifShahzad/CustomerSegmentation" class="project-link">🔗 Check Project</a>
-    </div>
-
-  </div>
-</section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>My <span>Services</span></h2>
-        <div class="services-container">
-            <div class="service-box">
-                <i class="bx bx-line-chart"></i>
-                <h3>Data Analytics</h3>
-                <p>Providing insights from data using Python, Power BI, and SQL.</p>
-            </div>
-            <div class="service-box">
-                <i class="bx bx-brain"></i>
-                <h3>Machine Learning</h3>
-                <p>Building predictive models using deep learning and AI.</p>
-            </div>
-            <div class="service-box">
-                <i class="bx bx-code"></i>
-                <h3>Web Development</h3>
-                <p>Creating full-stack MERN applications with modern UI/UX.</p>
-            </div>
+    <section class="services" id="services">
+        <h2 class="heading">Our <span>Services</span></h2>
+        <div class="services-container" id="services-container">
+            <!-- Dynamic Content -->
         </div>
     </section>
 
-<!-- Experience Section -->
-<section id="experience" class="experience">
-    <h2>My <span>Experience</span></h2>
-    <div class="experience-container">
-        
-        <div class="experience-box">
-            <i class="bx bx-briefcase"></i>
-            <h3>Netsol Technologies</h3>
-            <h4>Python Developer Intern</h4>
-            <ul>
-                <li>Wrote clear, efficient, and well-documented Python code for data processing and analytics pipelines.</li>
-                <li>Developed and maintained backend services using FastAPI frameworks.</li>
-                <li>Performed code reviews and collaborated with cross-functional teams.</li>
-            </ul>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+        <div class="portfolio-container" id="projects-container">
+            <!-- Dynamic Content -->
         </div>
-        
-        <div class="experience-box">
-            <i class="bx bx-briefcase"></i>
-            <h3>WriteO</h3>
-            <h4>Data Scientist Intern</h4>
-            <ul>
-                <li>Conducted exploratory data analysis (EDA) on large datasets using Python, Pandas, and SQL to uncover insights.</li>
-                <li>Built and evaluated machine learning models with Scikit-learn for classification and regression problems.</li>
-                <li>Created interactive data visualizations using Matplotlib, Seaborn, and Power BI for business storytelling.</li>
-                <li>Preprocessed, cleaned, and engineered features to improve model performance and data quality.</li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-
+    </section>
 
     <!-- Certifications Section -->
-    <section id="certification" class="certifications">
-        <h2>Certifications</h2>
-        <div class="cert-container">
-            
-            <div class="cert-card">
-                <i class='bx bx-bar-chart-alt-2'></i>
-                <h3>Programming for Everybody</h3>
-                <p>University of Michigan • January  2024</p>
-            </div>
+    <section class="certifications" id="certification">
+        <h2 class="heading">My <span>Certifications</span></h2>
+        <div class="cert-container" id="certifications-container">
+            <!-- Dynamic Content -->
+        </div>
+    </section>
 
-            <div class="cert-card">
-                <i class='bx bx-line-chart'></i>
-                <h3>Python for Data Science, AI & Development</h3>
-                <p>IBM • October  2023</p>
-            </div>
-
-            <div class="cert-card">
-                <i class='bx bx-brain'></i>
-                <h3>Machine Learning with Python</h3>
-                <p>IBM • January  2025</p>
-            </div>
-
-            <div class="cert-card">
-                <i class='bx bx-data'></i>
-                <h3>Harnessing the Power of Data with Power BI</h3>
-                <p>Microsoft • January 2024</p>
-            </div>
-
-            <div class="cert-card">
-                <i class='bx bx-line-chart-down'></i>
-                <h3>Introduction to Deep Learning & Neural Networks with Keras</h3>
-                <p>IBM • January 2025</p>
-            </div>
-            
-            <div class="cert-card">
-                <i class='bx bx-code-alt'></i>
-                <h3>Google AI Essentials</h3>
-                <p>Google • August  2024</p>
-            </div>
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <h2 class="heading">My <span>Experience</span></h2>
+        <div class="experience-container" id="experience-container">
+            <!-- Dynamic Content -->
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact <span>Me</span></h2>
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class='bx bx-envelope'></i>
-              <h3>Email</h3>
-              <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=shahzadasif041@gmail.com" target="_blank">shahzadasif041@gmail.com</a></p>
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
             </div>
-      
-            <div class="contact-item">
-              <i class='bx bxl-linkedin'></i>
-              <h3>LinkedIn</h3>
-              <p><a href="https://www.linkedin.com/in/asiifshahzad/" target="_blank">linkedin.com/in/asiifshahzad</a></p>
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="Email Subject">
             </div>
-      
-            <div class="contact-item">
-              <i class='bx bxl-github'></i>
-              <h3>GitHub</h3>
-              <p><a href="https://github.com/AsiifShahzad" target="_blank">github.com/AsiifShahzad</a></p>
-            </div>
-          </div>
-        </section>
-    <footer>
-        <p>&copy; 2024 Asif Shahzad. All Rights Reserved.</p>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2024 by Asif Shahzad | All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <!-- Scroll Reveal could be added here if desired later -->
+    <script src="js/data.js"></script>
     <script src="script.js"></script>
 </body>
 
 </html>
-

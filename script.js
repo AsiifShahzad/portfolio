@@ -1,115 +1,128 @@
-// Wait for the DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-    // Get all navigation links
-    const navLinks = document.querySelectorAll(".navbar a")
-  
-    // Add active class to navbar links based on scroll position
-    function updateActiveLink() {
-      const sections = document.querySelectorAll("section")
-      const scrollPosition = window.scrollY + 100 // Offset for better accuracy
-  
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.offsetHeight
-        const sectionId = section.getAttribute("id")
-  
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          // Remove active class from all links
-          navLinks.forEach((link) => {
-            link.classList.remove("active")
-          })
-  
-          // Add active class to current section link
-          const activeLink = document.querySelector(`.navbar a[href="#${sectionId}"]`)
-          if (activeLink) {
-            activeLink.classList.add("active")
-          }
-        }
-      })
-    }
-  
-    // Add smooth scrolling to all navigation links
-    navLinks.forEach((link) => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault()
-  
-        // Get the target section id from the href attribute
-        const targetId = this.getAttribute("href")
-        const targetSection = document.querySelector(targetId)
-  
-        if (targetSection) {
-          // Smooth scroll to the target section
-          window.scrollTo({
-            top: targetSection.offsetTop - 80, // Offset for header height
-            behavior: "smooth",
-          })
-  
-          // Update active link
-          navLinks.forEach((link) => link.classList.remove("active"))
-          this.classList.add("active")
-        }
-      })
-    })
-  
-    // Add scroll event listener to update active link
-    window.addEventListener("scroll", updateActiveLink)
-  
-    // Call updateActiveLink on page load
-    updateActiveLink()
-  
-    // Add animation to elements when they come into view
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll(".service-box, .project-box, .cert-card, .contact-item, .skill-category")
-  
-      elements.forEach((element) => {
-        const elementPosition = element.getBoundingClientRect().top
-        const screenPosition = window.innerHeight / 1.3
-  
-        if (elementPosition < screenPosition) {
-          element.style.animation = "fadeIn 1s ease forwards"
-          element.style.opacity = "1"
-        }
-      })
-    }
-  
-    // Set initial opacity for animation elements
-    const elementsToAnimate = document.querySelectorAll(
-      ".service-box, .project-box, .cert-card, .contact-item, .skill-category",
-    )
-    elementsToAnimate.forEach((element) => {
-      element.style.opacity = "0"
-    })
-  
-    // Add scroll event listener for animations
-    window.addEventListener("scroll", animateOnScroll)
-  
-    // Call animateOnScroll on page load
-    animateOnScroll()
-  
-    // Form submission handling
-    const contactForm = document.querySelector(".contact-form form")
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault()
-  
-        // Get form data
-        const name = this.querySelector('input[type="text"]').value
-        const email = this.querySelector('input[type="email"]').value
-        const message = this.querySelector("textarea").value
-  
-        // Simple form validation
-        if (!name || !email || !message) {
-          alert("Please fill in all fields")
-          return
-        }
-  
-        // Here you would typically send the form data to a server
-        // For now, we'll just show a success message
-        alert(`Thank you, ${name}! Your message has been sent.`)
-  
-        // Reset the form
-        this.reset()
-      })
-    }
-  })
-  
+// Toggle Icon Navbar
+let menuIcon = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+
+menuIcon.onclick = () => {
+  menuIcon.classList.toggle('bx-x');
+  navbar.classList.toggle('active');
+};
+
+// Scroll Sections Active Link
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nav a');
+
+window.onscroll = () => {
+  sections.forEach(sec => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute('id');
+
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach(links => {
+        links.classList.remove('active');
+        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+      });
+    };
+  });
+
+  // Sticky Navbar
+  let header = document.querySelector('header');
+  header.classList.toggle('sticky', window.scrollY > 100);
+
+  // Remove toggle icon and navbar when click navbar link
+  menuIcon.classList.remove('bx-x');
+  navbar.classList.remove('active');
+};
+
+// Dynamic Content Rendering
+document.addEventListener('DOMContentLoaded', () => {
+  renderServices();
+  renderProjects();
+  renderExperience();
+  renderCertifications();
+});
+
+function renderServices() {
+  const container = document.getElementById('services-container');
+  if (!data.services) return;
+
+  data.services.forEach(service => {
+    const div = document.createElement('div');
+    div.className = 'service-box';
+    div.innerHTML = `
+            <i class='bx ${service.icon}'></i>
+            <h3>${service.title}</h3>
+            <p>${service.desc}</p>
+        `;
+    container.appendChild(div);
+  });
+}
+
+function renderProjects() {
+  const container = document.getElementById('projects-container');
+  if (!data.projects) return;
+
+  data.projects.forEach(project => {
+    const div = document.createElement('div');
+    div.className = 'portfolio-box';
+
+    // We are using a generic background or could use project images if available. 
+    // For now, styling relies on CSS gradients or we need to add images to data.js
+    // Using a data attribute for ID to pass to the detail page
+
+    div.innerHTML = `
+            <div class="portfolio-content-visible">
+                 <h4>${project.title}</h4>
+                 <p>${project.summary}</p>
+            </div>
+            <div class="portfolio-layer">
+                <h4>${project.title}</h4>
+                <p>Click to view details</p>
+                <a href="project.html?id=${project.id}"><i class='bx bx-link-external'></i></a>
+            </div>
+        `;
+    container.appendChild(div);
+  });
+}
+
+function renderExperience() {
+  const container = document.getElementById('experience-container');
+  if (!data.experience) return;
+
+  data.experience.forEach(exp => {
+    const div = document.createElement('div');
+    div.className = 'service-box'; // Reusing service-box style which looks good for cards
+    div.style.textAlign = 'left';
+
+    let descHtml = '<ul>';
+    exp.desc.forEach(point => {
+      descHtml += `<li style="font-size: 1.4rem; color: #ccc; margin-bottom: 0.5rem;">• ${point}</li>`;
+    });
+    descHtml += '</ul>';
+
+    div.innerHTML = `
+            <i class='bx bx-briefcase' style="font-size: 4rem; margin-bottom: 1rem;"></i>
+            <h3 style="font-size: 2rem;">${exp.company}</h3>
+            <h4 style="font-size: 1.6rem; color: var(--main-color); margin-bottom: 1rem;">${exp.role}</h4>
+            ${descHtml}
+        `;
+    container.appendChild(div);
+  });
+}
+
+function renderCertifications() {
+  const container = document.getElementById('certifications-container');
+  if (!data.certifications) return;
+
+  data.certifications.forEach(cert => {
+    const div = document.createElement('div');
+    div.className = 'cert-card';
+    div.innerHTML = `
+            <i class='bx ${cert.icon}'></i>
+            <h3>${cert.title}</h3>
+            <p>${cert.issuer} • ${cert.date}</p>
+        `;
+    container.appendChild(div);
+  });
+}
