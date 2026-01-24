@@ -1,6 +1,32 @@
 const data = {
     "projects": [
+
         {
+            "id": "jobpulse-ai",
+            "title": "JobPulseAI",
+            "summary": "Automated data pipeline and dashboard system for job market intelligence with daily data refresh.",
+            "description": "JobPulseAI is a production-grade, fully automated job market analytics platform that fetches job postings daily, processes and analyzes them, and provides interactive visualizations via a Streamlit dashboard. Built with Prefect for robust ETL orchestration and deployed on AWS EC2 with minimal manual intervention required.",
+            "techStack": [
+                { "name": "Python", "icon": "bxl-python" },
+                { "name": "Prefect", "icon": "bx-code" },
+                { "name": "Streamlit", "icon": "bx-line-chart" },
+                { "name": "AWS EC2", "icon": "bxl-amazon" },
+                { "name": "Pandas", "icon": "bx-data" },
+                { "name": "NLP/TF-IDF", "icon": "bx-brain" }
+            ],
+            "links": {
+                "demo": "http://51.21.196.14:8501/",
+                "github": "https://github.com/AsiifShahzad/JobPulseAI"
+            },
+            "features": [
+                { "title": "ETL Pipeline", "desc": "Automated daily data ingestion from Adzuna API with Prefect orchestration." },
+                { "title": "NLP Skill Extraction", "desc": "Extracts and analyzes job skills using ontology-based regex and TF-IDF." },
+                { "title": "Interactive Dashboard", "desc": "Real-time visualizations including salary trends, in-demand skills, and hiring locations." },
+                { "title": "Automated Scheduling", "desc": "Systemd timer triggers pipeline daily at 2 AM UTC." },
+                { "title": "Cloud Deployment", "desc": "Fully automated on AWS EC2 with no manual intervention needed." }
+            ]
+        },
+                {
             "id": "chef-ai",
             "title": "Chef Ai",
             "summary": "AI-powered recipe recommender helping users decide what to cook with limited ingredients.",
@@ -13,7 +39,7 @@ const data = {
             ],
             "links": {
                 "demo": "https://radiant-sopapillas-9ee167.netlify.app/",
-                "github": "#" 
+                "github": "https://github.com/AsiifShahzad/ChefAI" 
             },
             "features": [
                 { "title": "Ingredient Recognition", "desc": "Input ingredients to get matching recipes." },
@@ -86,6 +112,7 @@ const data = {
                 { "title": "Customer Groups", "desc": "Segmentation based on purchasing behavior." }
             ]
         }
+        
     ],
     "experience": [
         {

@@ -63,25 +63,42 @@ function renderProjects() {
   const container = document.getElementById('projects-container');
   if (!data.projects) return;
 
-  data.projects.forEach(project => {
+  data.projects.forEach((project, index) => {
     const div = document.createElement('div');
-    div.className = 'portfolio-box';
-
-    // We are using a generic background or could use project images if available. 
-    // For now, styling relies on CSS gradients or we need to add images to data.js
-    // Using a data attribute for ID to pass to the detail page
-
+    div.className = 'project-card';
+    
+    // Build tech stack HTML
+    let techStackHtml = '<div class="tech-stack">';
+    project.techStack.forEach(tech => {
+      techStackHtml += `<span class="tech-tag"><i class='bx ${tech.icon}'></i>${tech.name}</span>`;
+    });
+    techStackHtml += '</div>';
+    
+    // Build how it works/features HTML
+    let workingHtml = '<div class="project-working"><h4>How It Works</h4><ul>';
+    project.features.slice(0, 3).forEach(feature => {
+      workingHtml += `<li><strong>${feature.title}:</strong> ${feature.desc}</li>`;
+    });
+    workingHtml += '</ul></div>';
+    
+    // Build action buttons
+    const githubLink = project.links.github !== '#' ? project.links.github : '#';
+    const githubHtml = githubLink !== '#' ? `<a href="${githubLink}" target="_blank" class="btn-github"><i class='bx bxl-github'></i>GitHub</a>` : '';
+    
     div.innerHTML = `
-            <div class="portfolio-content-visible">
-                 <h4>${project.title}</h4>
-                 <p>${project.summary}</p>
-            </div>
-            <div class="portfolio-layer">
-                <h4>${project.title}</h4>
-                <p>Click to view details</p>
-                <a href="project.html?id=${project.id}"><i class='bx bx-link-external'></i></a>
-            </div>
-        `;
+      <div class="project-number">${String(index + 1).padStart(2, '0')}</div>
+      <div class="project-content">
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        ${workingHtml}
+        ${techStackHtml}
+        <div class="project-actions">
+          <a href="${project.links.demo}" target="_blank" class="btn-demo">View Demo</a>
+          ${githubHtml}
+        </div>
+      </div>
+    `;
+    
     container.appendChild(div);
   });
 }
@@ -92,21 +109,20 @@ function renderExperience() {
 
   data.experience.forEach(exp => {
     const div = document.createElement('div');
-    div.className = 'service-box'; // Reusing service-box style which looks good for cards
-    div.style.textAlign = 'left';
+    div.className = 'experience-card';
 
     let descHtml = '<ul>';
     exp.desc.forEach(point => {
-      descHtml += `<li style="font-size: 1.4rem; color: #ccc; margin-bottom: 0.5rem;">• ${point}</li>`;
+      descHtml += `<li>• ${point}</li>`;
     });
     descHtml += '</ul>';
 
     div.innerHTML = `
-            <i class='bx bx-briefcase' style="font-size: 4rem; margin-bottom: 1rem;"></i>
-            <h3 style="font-size: 2rem;">${exp.company}</h3>
-            <h4 style="font-size: 1.6rem; color: var(--main-color); margin-bottom: 1rem;">${exp.role}</h4>
-            ${descHtml}
-        `;
+      <i class='bx bx-briefcase'></i>
+      <h3>${exp.company}</h3>
+      <h4>${exp.role}</h4>
+      ${descHtml}
+    `;
     container.appendChild(div);
   });
 }
