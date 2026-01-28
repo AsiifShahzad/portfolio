@@ -26,7 +26,7 @@ const data = {
                 { "title": "Cloud Deployment", "desc": "Fully automated on AWS EC2 with no manual intervention needed." }
             ]
         },
-                {
+        {
             "id": "chef-ai",
             "title": "Chef Ai",
             "summary": "AI-powered recipe recommender helping users decide what to cook with limited ingredients.",
@@ -39,7 +39,7 @@ const data = {
             ],
             "links": {
                 "demo": "https://radiant-sopapillas-9ee167.netlify.app/",
-                "github": "https://github.com/AsiifShahzad/ChefAI" 
+                "github": "https://github.com/AsiifShahzad/ChefAI"
             },
             "features": [
                 { "title": "Ingredient Recognition", "desc": "Input ingredients to get matching recipes." },
@@ -47,72 +47,29 @@ const data = {
             ]
         },
         {
-            "id": "freshtrack",
-            "title": "FreshTrack",
-            "summary": "Intelligent food management app to track expiry dates and reduce food waste.",
-            "description": "Food waste is a significant global issue, with approximately one-third of all food produced being wasted. FreshTrack is an intelligent food management app that tracks expiry dates, sends timely notifications, and suggests recipes to reduce waste.",
-            "techStack": [
-                { "name": "HTML", "icon": "bxl-html5" },
-                { "name": "CSS", "icon": "bxl-css3" },
-                { "name": "Node.js", "icon": "bxl-nodejs" },
-                { "name": "PostgreSQL", "icon": "bxl-postgresql" },
-                { "name": "Firebase", "icon": "bxl-firebase" },
-                { "name": "Express.js", "icon": "bx-server" }
-            ],
-            "links": {
-                "demo": "https://github.com/AsiifShahzad/FreshTrackAi", 
-                "github": "https://github.com/AsiifShahzad/FreshTrackAi"
-            },
-            "features": [
-                { "title": "Image Recognition", "desc": "Add products by simply taking a photo. AI extracts expiry info." },
-                { "title": "Smart Alerts", "desc": "Receive notifications when products approach expiry." },
-                { "title": "Chef AI", "desc": "Get personalized recipe suggestions based on tracked items." },
-                { "title": "Waste Analytics", "desc": "Track progress in reducing food waste." }
-            ]
-        },
-        {
-            "id": "movie-hit-prediction",
-            "title": "Movie Hit Prediction",
-            "summary": "ML model predicting movie success based on budget, cast, and genre.",
-            "description": "Studios risk heavy losses by producing movies without reliable demand predictions. This project uses a machine learning model to predict whether a movie will be a hit or flop based on factors such as budget, cast, and genre, helping filmmakers make data-driven decisions.",
+            "id": "movie-revenue-intelligence",
+            "title": "Movie Revenue Intelligence System",
+            "summary": "Complete ML system to predict movie revenue with FastAPI and Docker deployment.",
+            "description": "Built a complete ML system to predict movie revenue. Engineered high-impact features including genre popularity, cast/director success scores, studio-level aggregations, and release seasonality. Trained and compared multiple models (Linear Regression, Random Forest, XGBoost, LightGBM) with hyperparameter optimization. Deployed the final model using FastAPI with Docker, including revenue prediction and hit/flop classification endpoints.",
             "techStack": [
                 { "name": "Python", "icon": "bxl-python" },
-                { "name": "Pandas", "icon": "bx-data" },
-                { "name": "Scikit-Learn", "icon": "bx-brain" },
-                { "name": "Matplotlib", "icon": "bx-bar-chart-alt-2" }
+                { "name": "FastAPI", "icon": "bx-server" },
+                { "name": "Docker", "icon": "bxl-docker" },
+                { "name": "XGBoost", "icon": "bx-brain" },
+                { "name": "LightGBM", "icon": "bx-scatter-chart" },
+                { "name": "Scikit-Learn", "icon": "bx-brain" }
             ],
             "links": {
-                "demo": "https://github.com/AsiifShahzad/AI-Movie-Hit-Predictor",
-                "github": "https://github.com/AsiifShahzad/AI-Movie-Hit-Predictor"
+                "demo": "https://ai-movie-prediction-frontend.vercel.app/",
+                "github": "https://github.com/AsiifShahzad/AI-Movie-Hit-Predictor.git"
             },
             "features": [
-                { "title": "Data Preprocessing", "desc": "Cleaned movie metadata for high-quality input." },
-                { "title": "Feature Engineering", "desc": "Advanced features from genres and release dates." },
-                { "title": "Hyperparameter Tuning", "desc": "Optimized Random Forest model using RandomizedSearchCV." },
-                { "title": "Feature Importance", "desc": "Visualized key factors affecting success." }
-            ]
-        },
-        {
-            "id": "customer-segmentation",
-            "title": "Customer Segmentation",
-            "summary": "Interactive dashboard using D3.js to segment customers for targeted marketing.",
-            "description": "Businesses struggle to target different customer groups effectively. This project is an interactive dashboard built with D3.js that segments customers into groups and provides filtering options for deeper insights.",
-            "techStack": [
-                { "name": "D3.js", "icon": "bx-bar-chart-alt-2" },
-                { "name": "JavaScript", "icon": "bxl-javascript" },
-                { "name": "HTML", "icon": "bxl-html5" },
-                { "name": "CSS", "icon": "bxl-css3" }
-            ],
-            "links": {
-                "demo": "https://github.com/AsiifShahzad/CustomerSegmentation",
-                "github": "https://github.com/AsiifShahzad/CustomerSegmentation"
-            },
-            "features": [
-                { "title": "Interactive Visuals", "desc": "Dynamic charts and graphs using D3.js." },
-                { "title": "Customer Groups", "desc": "Segmentation based on purchasing behavior." }
+                { "title": "Feature Engineering", "desc": "Engineered features like genre popularity, cast/director success scores, and release seasonality." },
+                { "title": "Model Optimization", "desc": "Trained and compared Linear Regression, Random Forest, XGBoost, and LightGBM with hyperparameter tuning." },
+                { "title": "FastAPI & Docker", "desc": "Deployed with FastAPI including revenue prediction and hit/flop classification endpoints." }
             ]
         }
-        
+
     ],
     "experience": [
         {
