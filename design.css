@@ -772,3 +772,64 @@ section {
         right: 20px;
     }
 }
+
+/* Skills Section Styling */
+.skills {
+    background: var(--bg-color);
+}
+
+.skills h2 {
+    margin-bottom: 5rem;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    padding: 0 5%;
+}
+
+.skill-card {
+    background: var(--second-bg-color);
+    padding: 2.5rem 1.5rem;
+    border-radius: 2rem;
+    text-align: center;
+    border: .2rem solid var(--second-bg-color);
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.skill-card:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
+
+.skill-card i {
+    font-size: 4rem;
+    color: var(--main-color);
+}
+
+.skill-card h3 {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .skill-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .skill-card i {
+        font-size: 3rem;
+    }
+    
+    .skill-card h3 {
+        font-size: 1.2rem;
+    }
+}

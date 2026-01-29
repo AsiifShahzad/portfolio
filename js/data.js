@@ -96,20 +96,32 @@ const data = {
     ],
     "services": [
         {
-            "title": "Data Analytics",
-            "desc": "Providing insights from data using Python, Power BI, and SQL.",
+            "title": "Data Science",
+            "desc": "Extracting insights and making predictions using statistical and computational methods.",
             "icon": "bx-line-chart"
         },
         {
-            "title": "Machine Learning",
-            "desc": "Building predictive models using deep learning and AI.",
+            "title": "AI/ML Engineering",
+            "desc": "Building and deploying robust machine learning models and end-to-end AI systems.",
             "icon": "bx-brain"
         },
         {
-            "title": "Web Development",
-            "desc": "Creating full-stack MERN applications with modern UI/UX.",
-            "icon": "bx-code"
+            "title": "Deep Learning",
+            "desc": "Developing advanced neural network architectures for complex vision and language tasks.",
+            "icon": "bx-network-chart"
         }
+    ],
+    "skills": [
+        { "name": "Python", "icon": "bxl-python" },
+        { "name": "SQL", "icon": "bx-data" },
+        { "name": "Pandas/NumPy", "icon": "bx-table" },
+        { "name": "Scikit-Learn", "icon": "bx-brain" },
+        { "name": "TensorFlow/PyTorch", "icon": "bx-landscape" },
+        { "name": "FastAPI/Flask", "icon": "bx-server" },
+        { "name": "Docker", "icon": "bxl-docker" },
+        { "name": "NLP", "icon": "bx-message-square-dots" },
+        { "name": "Computer Vision", "icon": "bx-camera" },
+        { "name": "AWS/Cloud", "icon": "bxl-amazon" }
     ],
     "certifications": [
         {

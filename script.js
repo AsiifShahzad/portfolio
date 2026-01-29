@@ -38,6 +38,7 @@ window.onscroll = () => {
 // Dynamic Content Rendering
 document.addEventListener('DOMContentLoaded', () => {
   renderServices();
+  renderSkills();
   renderProjects();
   renderExperience();
   renderCertifications();
@@ -59,6 +60,21 @@ function renderServices() {
   });
 }
 
+function renderSkills() {
+  const container = document.getElementById('skills-container');
+  if (!data.skills) return;
+
+  data.skills.forEach(skill => {
+    const div = document.createElement('div');
+    div.className = 'skill-card';
+    div.innerHTML = `
+            <i class='bx ${skill.icon}'></i>
+            <h3>${skill.name}</h3>
+        `;
+    container.appendChild(div);
+  });
+}
+
 function renderProjects() {
   const container = document.getElementById('projects-container');
   if (!data.projects) return;
@@ -66,25 +82,25 @@ function renderProjects() {
   data.projects.forEach((project, index) => {
     const div = document.createElement('div');
     div.className = 'project-card';
-    
+
     // Build tech stack HTML
     let techStackHtml = '<div class="tech-stack">';
     project.techStack.forEach(tech => {
       techStackHtml += `<span class="tech-tag"><i class='bx ${tech.icon}'></i>${tech.name}</span>`;
     });
     techStackHtml += '</div>';
-    
+
     // Build how it works/features HTML
     let workingHtml = '<div class="project-working"><h4>How It Works</h4><ul>';
     project.features.slice(0, 3).forEach(feature => {
       workingHtml += `<li><strong>${feature.title}:</strong> ${feature.desc}</li>`;
     });
     workingHtml += '</ul></div>';
-    
+
     // Build action buttons
     const githubLink = project.links.github !== '#' ? project.links.github : '#';
     const githubHtml = githubLink !== '#' ? `<a href="${githubLink}" target="_blank" class="btn-github"><i class='bx bxl-github'></i>GitHub</a>` : '';
-    
+
     div.innerHTML = `
       <div class="project-number">${String(index + 1).padStart(2, '0')}</div>
       <div class="project-content">
@@ -98,7 +114,7 @@ function renderProjects() {
         </div>
       </div>
     `;
-    
+
     container.appendChild(div);
   });
 }
