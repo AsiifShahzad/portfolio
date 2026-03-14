@@ -9,14 +9,14 @@ const data = {
     "techStack": [
         { "name": "Python", "icon": "bxl-python" },
         { "name": "LangChain", "icon": "bx-code" },
-        { "name": "FAISS", "icon": "bx-data" },
+        { "name": "Pinecone", "icon": "bx-data" },
         { "name": "OpenAI API", "icon": "bx-brain" },
-        { "name": "Streamlit", "icon": "bx-line-chart" },
+        { "name": "Docker", "icon": "bx-line-chart" },
         { "name": "Pandas/NumPy", "icon": "bx-table" }
     ],
     "links": {
-        "demo": "https://asiifshahzad.vercel.app/AskMyPDF",
-        "github": "https://github.com/AsiifShahzad/AskMyPDF"
+        "demo": "https://document-chat-frontend-kappa.vercel.app/",
+        "github": "https://github.com/AsiifShahzad/DocumentChat"
     },
     "features": [
         { "title": "Multi-PDF Support", "desc": "Process and query multiple PDF documents seamlessly." },
