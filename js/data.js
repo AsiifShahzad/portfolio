@@ -10,7 +10,7 @@ const data = {
         { "name": "Python", "icon": "bxl-python" },
         { "name": "LangChain", "icon": "bx-code" },
         { "name": "Pinecone", "icon": "bx-data" },
-        { "name": "OpenAI API", "icon": "bx-brain" },
+        { "name": "Groq API", "icon": "bx-brain" },
         { "name": "Docker", "icon": "bx-line-chart" },
         { "name": "Pandas/NumPy", "icon": "bx-table" }
     ],
