@@ -2,6 +2,31 @@ const data = {
     "projects": [
 
         {
+    "id": "askmypdf",
+    "title": "AskMyPDF",
+    "summary": "RAG-based intelligent PDF search system providing answers with source citations and confidence scores.",
+    "description": "AskMyPDF is a Retrieval-Augmented Generation system that allows users to query any type of PDF document. It extracts content, generates embeddings for semantic search, applies reranking to improve result relevance, and returns answers with exact sources and confidence scores. The system is designed to handle multiple PDFs and provide fast, accurate responses for information retrieval.",
+    "techStack": [
+        { "name": "Python", "icon": "bxl-python" },
+        { "name": "LangChain", "icon": "bx-code" },
+        { "name": "FAISS", "icon": "bx-data" },
+        { "name": "OpenAI API", "icon": "bx-brain" },
+        { "name": "Streamlit", "icon": "bx-line-chart" },
+        { "name": "Pandas/NumPy", "icon": "bx-table" }
+    ],
+    "links": {
+        "demo": "https://asiifshahzad.vercel.app/AskMyPDF",
+        "github": "https://github.com/AsiifShahzad/AskMyPDF"
+    },
+    "features": [
+        { "title": "Multi-PDF Support", "desc": "Process and query multiple PDF documents seamlessly." },
+        { "title": "Semantic Search", "desc": "Generates embeddings for PDF content and retrieves relevant information using vector search." },
+        { "title": "Reranking & Confidence Scores", "desc": "Applies reranking techniques and provides confidence scores for retrieved answers." },
+        { "title": "Source Attribution", "desc": "Returns exact PDF sections and page numbers used to answer queries." },
+        { "title": "Interactive Dashboard", "desc": "Users can upload PDFs and ask questions through a simple Streamlit interface." }
+    ]
+}
+        ,{
             "id": "jobpulse-ai",
             "title": "JobPulseAI",
             "summary": "Automated data pipeline and dashboard system for job market intelligence with daily data refresh.",
