@@ -25,7 +25,32 @@ const data = {
         { "title": "Source Attribution", "desc": "Returns exact PDF sections and page numbers used to answer queries." },
         { "title": "Interactive Dashboard", "desc": "Users can upload PDFs and ask questions through a simple Streamlit interface." }
     ]
-}
+},{
+            "id": "idea-validator",
+            "title": "AI Idea Validator",
+            "summary": "AI-powered platform that validates business ideas using a multi-agent pipeline backed by real market data.",
+            "description": "An intelligent idea validation system that reduces validation time from days to seconds. The platform pulls signals from 8 real data sources (Tavily, Reddit, GitHub, Google Trends, Arxiv, News API, Product Hunt, Pinecone) and returns a structured verdict with score, confidence, demand, competition, and risk analysis. Implemented as a full-stack application with a LangGraph multi-agent pipeline orchestrated on FastAPI backend and React frontend, featuring real-time streaming results so users see each agent's progress as it runs.",
+            "techStack": [
+                { "name": "FastAPI", "icon": "bx-server" },
+                { "name": "LangGraph", "icon": "bx-code" },
+                { "name": "Groq API", "icon": "bx-brain" },
+                { "name": "React", "icon": "bxl-react" },
+                { "name": "Vite", "icon": "bxl-javascript" },
+                { "name": "Tailwind CSS", "icon": "bxl-tailwindcss" },
+                { "name": "Pinecone", "icon": "bx-data" }
+            ],
+            "links": {
+                "demo": "https://idea-validator-blue.vercel.app/",
+                "github": "https://github.com/AsiifShahzad/ai-idea-validator.git"
+            },
+            "features": [
+                { "title": "Multi-Agent Pipeline", "desc": "Runs classifier, research, demand, competition, risk, decision, and reflection agents in optimized parallel phases." },
+                { "title": "8 Data Sources", "desc": "Integrates Tavily, Reddit, GitHub, Google Trends, Arxiv, News API, Product Hunt, and Pinecone for comprehensive market research." },
+                { "title": "Structured Verdicts", "desc": "Returns comprehensive analysis including verdict (Promising/Questionable/High-Risk), score, confidence, success factors, and failure reasons." },
+                { "title": "Real-Time Streaming", "desc": "Streams results in real-time so users see each agent's progress as the validation runs." },
+                { "title": "Full-Stack Deployment", "desc": "Backend deployed on Render and frontend on Vercel for production-ready performance." }
+            ]
+        }
         ,{
             "id": "jobpulse-ai",
             "title": "JobPulseAI",
@@ -51,26 +76,7 @@ const data = {
                 { "title": "Cloud Deployment", "desc": "Fully automated on AWS EC2 with no manual intervention needed." }
             ]
         },
-        {
-            "id": "chef-ai",
-            "title": "Chef Ai",
-            "summary": "AI-powered recipe recommender helping users decide what to cook with limited ingredients.",
-            "description": "Many people struggle with deciding what to cook using the limited ingredients they have at home. This often leads to food waste or repetitive meals. Chef Ai takes user-provided ingredients and instantly recommends recipe ideas, helping users save time, reduce waste, and try new dishes.",
-            "techStack": [
-                { "name": "React.js", "icon": "bxl-react" },
-                { "name": "Node.js", "icon": "bxl-nodejs" },
-                { "name": "Hugging Face", "icon": "bx-brain" },
-                { "name": "CSS", "icon": "bxl-css3" }
-            ],
-            "links": {
-                "demo": "https://radiant-sopapillas-9ee167.netlify.app/",
-                "github": "https://github.com/AsiifShahzad/ChefAI"
-            },
-            "features": [
-                { "title": "Ingredient Recognition", "desc": "Input ingredients to get matching recipes." },
-                { "title": "Instant Recommendations", "desc": "AI-generated recipe ideas in seconds." }
-            ]
-        },
+         
         {
             "id": "movie-revenue-intelligence",
             "title": "Movie Revenue Intelligence System",
@@ -94,6 +100,7 @@ const data = {
                 { "title": "FastAPI & Docker", "desc": "Deployed with FastAPI including revenue prediction and hit/flop classification endpoints." }
             ]
         }
+        
 
     ],
     "experience": [
