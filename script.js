@@ -52,10 +52,10 @@ function renderServices() {
     const div = document.createElement('div');
     div.className = 'service-box';
     div.innerHTML = `
-            <i class='bx ${service.icon}'></i>
-            <h3>${service.title}</h3>
-            <p>${service.desc}</p>
-        `;
+      <i class='bx ${service.icon}'></i>
+      <h3>${service.title}</h3>
+      <p>${service.desc}</p>
+    `;
     container.appendChild(div);
   });
 }
@@ -64,15 +64,47 @@ function renderSkills() {
   const container = document.getElementById('skills-container');
   if (!data.skills) return;
 
-  data.skills.forEach(skill => {
-    const div = document.createElement('div');
-    div.className = 'skill-card';
-    div.innerHTML = `
-            <i class='bx ${skill.icon}'></i>
-            <h3>${skill.name}</h3>
+  // Handle categorized skills structure
+  if (data.skills.category && Array.isArray(data.skills.category)) {
+    data.skills.category.forEach(category => {
+      // Create category section
+      const categoryDiv = document.createElement('div');
+      categoryDiv.className = 'skill-category';
+      
+      const titleDiv = document.createElement('h3');
+      titleDiv.className = 'category-title';
+      titleDiv.textContent = category.name;
+      categoryDiv.appendChild(titleDiv);
+      
+      // Create grid for skills
+      const gridDiv = document.createElement('div');
+      gridDiv.className = 'skills-grid';
+      
+      category.items.forEach(skill => {
+        const skillDiv = document.createElement('div');
+        skillDiv.className = 'skill-card';
+        skillDiv.innerHTML = `
+          <i class='bx ${skill.icon}'></i>
+          <span>${skill.name}</span>
         `;
-    container.appendChild(div);
-  });
+        gridDiv.appendChild(skillDiv);
+      });
+      
+      categoryDiv.appendChild(gridDiv);
+      container.appendChild(categoryDiv);
+    });
+  } else if (Array.isArray(data.skills)) {
+    // Fallback for flat array structure
+    data.skills.forEach(skill => {
+      const div = document.createElement('div');
+      div.className = 'skill-card';
+      div.innerHTML = `
+        <i class='bx ${skill.icon}'></i>
+        <h3>${skill.name}</h3>
+      `;
+      container.appendChild(div);
+    });
+  }
 }
 
 function renderProjects() {
@@ -85,16 +117,30 @@ function renderProjects() {
 
     // Build tech stack HTML
     let techStackHtml = '<div class="tech-stack">';
-    project.techStack.forEach(tech => {
-      techStackHtml += `<span class="tech-tag"><i class='bx ${tech.icon}'></i>${tech.name}</span>`;
-    });
+    if (project.techStack) {
+      project.techStack.forEach(tech => {
+        techStackHtml += `<span class="tech-tag"><i class='bx ${tech.icon}'></i>${tech.name}</span>`;
+      });
+    }
     techStackHtml += '</div>';
+
+    // Build metrics HTML
+    let metricsHtml = '';
+    if (project.metrics && project.metrics.length > 0) {
+      metricsHtml = '<div class="project-metrics">';
+      project.metrics.forEach(metric => {
+        metricsHtml += `<div class="metric-badge"><span class="metric-label">${metric.label}</span><span class="metric-value">${metric.value}</span></div>`;
+      });
+      metricsHtml += '</div>';
+    }
 
     // Build how it works/features HTML
     let workingHtml = '<div class="project-working"><h4>How It Works</h4><ul>';
-    project.features.slice(0, 3).forEach(feature => {
-      workingHtml += `<li><strong>${feature.title}:</strong> ${feature.desc}</li>`;
-    });
+    if (project.features) {
+      project.features.slice(0, 3).forEach(feature => {
+        workingHtml += `<li><strong>${feature.title}:</strong> ${feature.desc}</li>`;
+      });
+    }
     workingHtml += '</ul></div>';
 
     // Build action buttons
@@ -105,6 +151,8 @@ function renderProjects() {
       <div class="project-number">${String(index + 1).padStart(2, '0')}</div>
       <div class="project-content">
         <h3>${project.title}</h3>
+        <p class="project-summary">${project.summary}</p>
+        ${metricsHtml}
         <p>${project.description}</p>
         ${workingHtml}
         ${techStackHtml}
@@ -128,15 +176,18 @@ function renderExperience() {
     div.className = 'experience-card';
 
     let descHtml = '<ul>';
-    exp.desc.forEach(point => {
-      descHtml += `<li>• ${point}</li>`;
-    });
+    if (exp.desc && exp.desc.length > 0) {
+      exp.desc.forEach(point => {
+        descHtml += `<li>• ${point}</li>`;
+      });
+    }
     descHtml += '</ul>';
 
     div.innerHTML = `
       <i class='bx bx-briefcase'></i>
       <h3>${exp.company}</h3>
       <h4>${exp.role}</h4>
+      <p class="period">${exp.period}</p>
       ${descHtml}
     `;
     container.appendChild(div);
@@ -151,10 +202,10 @@ function renderCertifications() {
     const div = document.createElement('div');
     div.className = 'cert-card';
     div.innerHTML = `
-            <i class='bx ${cert.icon}'></i>
-            <h3>${cert.title}</h3>
-            <p>${cert.issuer} • ${cert.date}</p>
-        `;
+      <i class='bx ${cert.icon}'></i>
+      <h3>${cert.title}</h3>
+      <p>${cert.issuer} • ${cert.date}</p>
+    `;
     container.appendChild(div);
   });
 }

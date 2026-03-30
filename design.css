@@ -833,3 +833,128 @@ section {
         font-size: 1.2rem;
     }
 }
+
+/* Skill Categories */
+.skill-category {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: var(--card-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: var(--main-color);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.category-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.skills-grid .skill-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.skills-grid .skill-card:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: var(--main-color);
+    transform: translateY(-2px);
+}
+
+.skills-grid .skill-card i {
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
+.skills-grid .skill-card span {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Project Metrics */
+.project-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(14, 165, 233, 0.05));
+    border-radius: 0.8rem;
+    border-left: 3px solid var(--main-color);
+}
+
+.metric-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--main-color);
+    font-family: 'Courier New', monospace;
+}
+
+@media (max-width: 768px) {
+    .skill-category {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .project-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-category {
+        padding: 1rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-grid .skill-card {
+        justify-content: flex-start;
+    }
+    
+    .project-metrics {
+        grid-template-columns: 1fr;
+    }
+}
