@@ -78,8 +78,8 @@ const data = {
                 { "name": "GitHub Actions", "icon": "bxl-github" }
             ],
             "links": {
-                "demo": "#",
-                "github": "https://github.com/AsiifShahzad"
+                "demo": "https://job-market-analytics-omega.vercel.app/",
+                "github": "https://github.com/AsiifShahzad/job-market-analytics.git"
             },
             "features": [
                 { "title": "Real-Time Job Market Analytics", "desc": "Processes 2000+ jobs with 100+ skills extracted per workflow, maintaining <6 hour data freshness via 6-hour update cycles." },
