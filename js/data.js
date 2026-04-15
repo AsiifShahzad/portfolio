@@ -64,34 +64,35 @@ const data = {
             ]
         }
         ,{
-            "id": "jobpulse-ai",
-            "title": "Production ETL Analytics Pipeline",
-            "summary": "Built robust ETL system with Prefect orchestration processing 50K+ jobs daily, deployed on AWS EC2 with NLP skill extraction and real-time analytics dashboard.",
-            "description": "Engineered production-grade job market analytics platform with fully automated data pipeline. Architecture: Daily Trigger (2 AM UTC) → Adzuna API Ingestion (50K+ records) → NLP Skill Extraction (Regex + TF-IDF hybrid) → Feature Engineering (Salary trends, location analysis, skill clustering) → Database Persistence → Streamlit Interactive Dashboard. Engineering decisions: (1) Prefect for orchestration over cron for robust retry logic and observability, (2) Hybrid NLP approach (Regex for standard skills, TF-IDF for emerging skills) achieving 91% extraction accuracy, (3) Systemd timer integration for reliable daily scheduling, (4) Aggregation layer + caching for sub-2s dashboard load time with 100K+ records. Challenges: API rate limiting (Adzuna: 200 req/min) solved via batch processing, NLP false positives (e.g., 'Python' as snake) handled with domain-specific filters, storage optimization for 1000+ fields per job record. Performance: 50K jobs processed daily at 99.5% uptime, 91% NLP accuracy (validated against manual labels), <$8/month AWS cost, handling 40+ concurrent dashboard users.",
+            "id": "job-market-intelligence",
+            "title": "Job Market Intelligence Engine",
+            "summary": "Engineered a real-time job market analytics system extracting actionable insights from live job data using NLP, statistical modeling, and automated pipelines.",
+            "description": "Built an end-to-end analytics engine transforming raw job listings into high-confidence career insights. Architecture: Job API Ingestion → Data Cleaning → NLP Skill Extraction → PostgreSQL (Relational Modeling) → Insight Engine (SQL + Python) → Streamlit Dashboard. Key Engineering Contributions: (1) Intelligent Data Pipeline - Automated ingestion pipeline with deduplication and retry logic, incremental updates via scheduled workflows, pipeline run tracking for observability; (2) Hybrid NLP Skill Extraction - Combined dictionary matching + fuzzy matching for high recall, reduced false positives (e.g., non-skill tools like GitHub), normalized synonyms (ML → Machine Learning, JS → JavaScript); (3) Statistical Insight Engine (Key Differentiator) - Implemented trend detection using rolling time windows (7-day WoW), introduced sample-size filtering to eliminate noisy insights, built salary analysis with outlier removal and bias control; (4) Market Intelligence Features - Skill demand ranking by category, high-paying skill identification, skill co-occurrence analysis for career path insights, remote vs on-site market comparison. Key Engineering Decisions: Noise Reduction Layer eliminated misleading insights by enforcing minimum sample thresholds, Hybrid Skill Extraction improved accuracy over naive keyword matching, SQL-First Aggregation reduced compute cost and improved scalability, Time-Windowed Trends prevented false '100% growth' signals from sparse data. Challenges Solved: Handled noisy real-world job data with inconsistent locations and missing salaries, prevented statistical bias in salary and trend analysis, built reliable skill extraction despite ambiguous job descriptions, balanced data freshness with API rate limits. Impact: Generated high-confidence insights enabling data-driven career decision support and demonstrated production-grade thinking combining data quality + reliability + insights.",
             "techStack": [
                 { "name": "Python", "icon": "bxl-python" },
-                { "name": "Prefect", "icon": "bx-code" },
+                { "name": "FastAPI", "icon": "bx-server" },
+                { "name": "PostgreSQL", "icon": "bxl-database" },
                 { "name": "Streamlit", "icon": "bx-line-chart" },
-                { "name": "AWS EC2", "icon": "bxl-amazon" },
-                { "name": "Pandas", "icon": "bx-data" },
-                { "name": "NLP/TF-IDF", "icon": "bx-brain" }
+                { "name": "spaCy", "icon": "bx-brain" },
+                { "name": "Pandas/NumPy", "icon": "bx-data" },
+                { "name": "GitHub Actions", "icon": "bxl-github" }
             ],
             "links": {
-                "demo": "http://51.21.196.14:8501/",
-                "github": "https://github.com/AsiifShahzad/JobPulseAI"
+                "demo": "#",
+                "github": "https://github.com/AsiifShahzad"
             },
             "features": [
-                { "title": "Prefect ETL Orchestration", "desc": "Robust daily scheduling with retry logic, observability, and error handling vs basic cron." },
-                { "title": "Hybrid NLP Pipeline", "desc": "Regex + TF-IDF skill extraction achieving 91% accuracy across standard and emerging technologies." },
-                { "title": "Real-Time Analytics", "desc": "Streamlit dashboard with salary trends, in-demand skills, location hotspots, and hiring patterns." },
-                { "title": "Production Scale", "desc": "Processing 50K+ job records daily at 99.5% uptime, sub-$8/month AWS deployment." },
-                { "title": "Performance Optimization", "desc": "Aggregation layer with caching enables sub-2s dashboard load even with 100K+ historical records." }
+                { "title": "Real-Time Job Market Analytics", "desc": "Processes 2000+ jobs with 100+ skills extracted per workflow, maintaining <6 hour data freshness via 6-hour update cycles." },
+                { "title": "Hybrid NLP Skill Extraction", "desc": "Combined dictionary matching and fuzzy matching achieving high recall while reducing false positives through intelligent filtering." },
+                { "title": "Statistical Insight Engine", "desc": "Trend detection with 7-day window analysis, sample-size filtering for noise reduction, and bias-controlled salary analysis avoiding outlier distortions." },
+                { "title": "Comprehensive Market Intelligence", "desc": "Skill demand ranking by category, high-paying skill identification, skill co-occurrence analysis, and remote vs on-site market comparisons." },
+                { "title": "Production-Grade Reliability", "desc": "Automated ingestion with deduplication and retry logic, incremental updates, pipeline tracking, and PostgreSQL persistence at scale." }
             ],
             "metrics": [
-                { "label": "Daily Volume", "value": "50K+" },
-                { "label": "Uptime", "value": "99.5%" },
-                { "label": "NLP Accuracy", "value": "91%" },
-                { "label": "Dashboard Load", "value": "<2s" }
+                { "label": "Jobs Processed", "value": "2,000+" },
+                { "label": "Skills Extracted", "value": "100+" },
+                { "label": "Update Frequency", "value": "6 hours" },
+                { "label": "Data Freshness", "value": "<6 hours" }
             ]
         },
          
