@@ -1,41 +1,41 @@
 const data = {
     "projects": [
-
         {
-    "id": "askmypdf",
-    "title": "Production RAG System",
-    "summary": "Engineered production RAG pipeline processing 1000+ documents with semantic search, reranking, and source attribution at <500ms latency.",
-    "description": "Built a retrieval-augmented generation system handling real-world document retrieval at scale. Architecture: PDF Ingestion → Vector Embedding (Groq API) → Semantic Search (Pinecone) → Reranking Engine → LLM Response with Source Attribution. Key engineering decisions: (1) Reranking layer added 25% accuracy improvement over raw semantic search, (2) Parallel embedding + inference reduced latency to <500ms, (3) Hybrid search fallback for complex documents. Challenges: handled PDFs with complex layouts through OCR preprocessing, optimized vector retrieval for 1000+ document corpus, maintained <100ms confidence score computation. Result: 87% correct answer retrieval rate, sub-500ms E2E latency, handling 20+ concurrent queries/minute.",
-    "techStack": [
-        { "name": "Python", "icon": "bxl-python" },
-        { "name": "LangChain", "icon": "bx-code" },
-        { "name": "Pinecone", "icon": "bx-data" },
-        { "name": "Groq API", "icon": "bx-brain" },
-        { "name": "Docker", "icon": "bx-line-chart" },
-        { "name": "Pandas/NumPy", "icon": "bx-table" }
-    ],
-    "links": {
-        "demo": "https://document-chat-frontend-kappa.vercel.app/",
-        "github": "https://github.com/AsiifShahzad/DocumentChat"
-    },
-    "features": [
-        { "title": "Vector Embedding Pipeline", "desc": "Processes and embeds PDF content at scale using Groq API for inference optimization." },
-        { "title": "Reranking Layer", "desc": "Two-stage retrieval: semantic search → reranking for 25% accuracy improvement." },
-        { "title": "Sub-500ms Latency", "desc": "Parallel embedding + inference architecture handling 1000+ document corpus." },
-        { "title": "Source Attribution", "desc": "Returns exact sections and confidence scores enabling fact-checking." },
-        { "title": "Production Deployment", "desc": "Dockerized, scalable deployment handling 20+ concurrent queries/minute." }
-    ],
-    "metrics": [
-        { "label": "Latency", "value": "<500ms" },
-        { "label": "Accuracy", "value": "87%" },
-        { "label": "Throughput", "value": "20 qpm" },
-        { "label": "Scale", "value": "1000+ docs" }
-    ]
-},{
+            "id": "askmypdf",
+            "title": "Production RAG System",
+            "summary": "Built a RAG pipeline for semantic document search with reranking and source attribution, achieving sub-500ms response times on a 1000+ document corpus.",
+            "description": "Built a retrieval-augmented generation system for real-world document Q&A. Architecture: PDF Ingestion → Chunking & Embedding (HuggingFace) → Vector Store (Pinecone) → Reranking → LLM Response with Source Attribution. Key decisions: (1) Added a reranking layer on top of semantic search — noticeably improved answer relevance on complex queries, (2) Parallelized embedding and inference to keep latency under 500ms, (3) Added hybrid search fallback for edge cases. Challenges: handled PDFs with tables and multi-column layouts using OCR preprocessing, tuned chunk size and overlap for better retrieval quality. Tested on a self-built eval set of 50 question-answer pairs.",
+            "techStack": [
+                { "name": "Python", "icon": "bxl-python" },
+                { "name": "LangChain", "icon": "bx-code" },
+                { "name": "Pinecone", "icon": "bx-data" },
+                { "name": "Groq API", "icon": "bx-brain" },
+                { "name": "Docker", "icon": "bx-line-chart" },
+                { "name": "Pandas/NumPy", "icon": "bx-table" }
+            ],
+            "links": {
+                "demo": "https://document-chat-frontend-kappa.vercel.app/",
+                "github": "https://github.com/AsiifShahzad/DocumentChat"
+            },
+            "features": [
+                { "title": "Vector Embedding Pipeline", "desc": "Chunks and embeds PDF content using HuggingFace models, stored in Pinecone for fast retrieval." },
+                { "title": "Reranking Layer", "desc": "Two-stage retrieval: semantic search followed by reranking — improved answer quality on ambiguous queries." },
+                { "title": "Sub-500ms Latency", "desc": "Parallelized embedding and inference pipeline tested on a 1000+ document corpus." },
+                { "title": "Source Attribution", "desc": "Returns the exact document sections used to generate each answer, making results verifiable." },
+                { "title": "Dockerized Deployment", "desc": "Containerized backend deployed on a cloud VM, tested under concurrent load." }
+            ],
+            "metrics": [
+                { "label": "Latency", "value": "<500ms" },
+                { "label": "Eval Set", "value": "50 QA pairs" },
+                { "label": "Corpus Size", "value": "1000+ docs" },
+                { "label": "Retrieval Stages", "value": "2 (search + rerank)" }
+            ]
+        },
+        {
             "id": "idea-validator",
             "title": "Multi-Agent Market Validation System",
-            "summary": "Designed 7-agent LangGraph orchestration reducing idea validation from 2+ days to 30 seconds using 8 parallel data sources.",
-            "description": "Engineered production multi-agent LLM system for automated market research. Architecture: Input → Classifier Agent → Parallel Phase (Research Agent + Demand Analytics + Competition Analysis) → Risk Assessment → Decision Agent → Reflection Agent → Structured Verdict. Engineering decisions: (1) 7-agent pipeline vs monolithic LLM for separation of concerns and debuggability, (2) LangGraph orchestration enables parallel phase execution reducing latency 40% vs sequential (60s → 35s), (3) Real-time streaming to frontend for user visibility into agent progress. Integrated 8 data sources (Tavily, Reddit, GitHub, Google Trends, Arxiv, News API, Product Hunt, Pinecone) with intelligent fallback handling. Challenges: API rate limiting across sources solved via request batching + exponential backoff, data inconsistency handled through normalization layer, LLM hallucination mitigated with reflection agent validation loop. Performance: 30-second end-to-end execution, 82% correctness on validation test set, deployed for 500+ idea validations in beta.",
+            "summary": "Built a 7-agent LangGraph pipeline that automates market research across 8 data sources, cutting manual validation from hours to under a minute.",
+            "description": "Built a multi-agent LLM system for automated market research on startup ideas. Architecture: Input → Classifier Agent → Parallel Phase (Research + Demand + Competition Analysis) → Risk Assessment → Decision Agent → Reflection Agent → Structured Verdict. Key decisions: (1) Split into 7 agents instead of one big prompt — easier to debug and each agent has a focused job, (2) LangGraph's parallel execution reduced total runtime significantly vs running agents sequentially, (3) Added a Reflection Agent to catch hallucinations and weak conclusions before the final verdict. Integrated 8 data sources (Tavily, Reddit, GitHub Trends, Google Trends, Arxiv, News API, Product Hunt, Pinecone) with fallback handling when APIs fail. Challenges: rate limiting across multiple APIs solved with request batching and backoff, inconsistent data formats handled through a normalization layer.",
             "techStack": [
                 { "name": "FastAPI", "icon": "bx-server" },
                 { "name": "LangGraph", "icon": "bx-code" },
@@ -50,24 +50,24 @@ const data = {
                 "github": "https://github.com/AsiifShahzad/ai-idea-validator.git"
             },
             "features": [
-                { "title": "7-Agent Orchestration", "desc": "Parallel agent execution (Classifier, Research, Demand, Competition, Risk, Decision, Reflection) with LangGraph state management." },
-                { "title": "8 Data Source Integration", "desc": "Tavily, Reddit, GitHub, Google Trends, Arxiv, News API, Product Hunt, Pinecone with intelligent aggregation and confidence scoring." },
-                { "title": "Structured Verdict Output", "desc": "Returns verdict (Promising/Questionable/High-Risk), score, confidence, success factors, and failure reasons in JSON format." },
-                { "title": "Real-Time Streaming", "desc": "WebSocket-based streaming allowing users to observe agent reasoning in real-time." },
-                { "title": "Production Reliability", "desc": "Error fallbacks, circuit breaker patterns, AWS/Vercel deployment with 99.2% uptime." }
+                { "title": "7-Agent Orchestration", "desc": "Parallel agent execution (Classifier, Research, Demand, Competition, Risk, Decision, Reflection) managed with LangGraph state." },
+                { "title": "8 Data Source Integration", "desc": "Pulls from Tavily, Reddit, GitHub, Google Trends, Arxiv, News API, Product Hunt, Pinecone with aggregation and confidence scoring." },
+                { "title": "Structured Verdict Output", "desc": "Returns verdict (Promising / Questionable / High-Risk), score, confidence, success factors, and failure reasons as JSON." },
+                { "title": "Real-Time Streaming", "desc": "Streams agent progress to the frontend so users can see reasoning as it happens." },
+                { "title": "Error Resilience", "desc": "Circuit breaker patterns and API fallbacks ensure the pipeline completes even when some data sources fail." }
             ],
             "metrics": [
-                { "label": "Execution Time", "value": "30 sec" },
-                { "label": "Accuracy", "value": "82%" },
+                { "label": "Execution Time", "value": "<60 sec" },
+                { "label": "Agents", "value": "7" },
                 { "label": "Data Sources", "value": "8" },
-                { "label": "Validation Scale", "value": "500+" }
+                { "label": "Output Format", "value": "Structured JSON" }
             ]
-        }
-        ,{
+        },
+        {
             "id": "job-market-intelligence",
             "title": "Job Market Intelligence Engine",
-            "summary": "Engineered a real-time job market analytics system extracting actionable insights from live job data using NLP, statistical modeling, and automated pipelines.",
-            "description": "Built an end-to-end analytics engine transforming raw job listings into high-confidence career insights. Architecture: Job API Ingestion → Data Cleaning → NLP Skill Extraction → PostgreSQL (Relational Modeling) → Insight Engine (SQL + Python) → Streamlit Dashboard. Key Engineering Contributions: (1) Intelligent Data Pipeline - Automated ingestion pipeline with deduplication and retry logic, incremental updates via scheduled workflows, pipeline run tracking for observability; (2) Hybrid NLP Skill Extraction - Combined dictionary matching + fuzzy matching for high recall, reduced false positives (e.g., non-skill tools like GitHub), normalized synonyms (ML → Machine Learning, JS → JavaScript); (3) Statistical Insight Engine (Key Differentiator) - Implemented trend detection using rolling time windows (7-day WoW), introduced sample-size filtering to eliminate noisy insights, built salary analysis with outlier removal and bias control; (4) Market Intelligence Features - Skill demand ranking by category, high-paying skill identification, skill co-occurrence analysis for career path insights, remote vs on-site market comparison. Key Engineering Decisions: Noise Reduction Layer eliminated misleading insights by enforcing minimum sample thresholds, Hybrid Skill Extraction improved accuracy over naive keyword matching, SQL-First Aggregation reduced compute cost and improved scalability, Time-Windowed Trends prevented false '100% growth' signals from sparse data. Challenges Solved: Handled noisy real-world job data with inconsistent locations and missing salaries, prevented statistical bias in salary and trend analysis, built reliable skill extraction despite ambiguous job descriptions, balanced data freshness with API rate limits. Impact: Generated high-confidence insights enabling data-driven career decision support and demonstrated production-grade thinking combining data quality + reliability + insights.",
+            "summary": "Built a job market analytics system that extracts skill trends from live job listings using NLP, statistical modeling, and automated ingestion pipelines.",
+            "description": "Built an end-to-end analytics engine that turns raw job listings into career insights. Architecture: Job API Ingestion → Data Cleaning → NLP Skill Extraction → PostgreSQL → Insight Engine (SQL + Python) → Dashboard. Key engineering work: (1) Hybrid NLP skill extraction combining dictionary matching and fuzzy matching — reduced false positives like GitHub being tagged as a skill, normalized synonyms like ML → Machine Learning; (2) Statistical insight engine with 7-day rolling windows for trend detection and minimum sample thresholds to avoid noisy signals from small data; (3) Salary analysis with outlier removal to prevent skewed averages. Challenges: real-world job data is messy — inconsistent location formats, missing salaries, vague job titles. Built deduplication and retry logic to handle API instability.",
             "techStack": [
                 { "name": "Python", "icon": "bxl-python" },
                 { "name": "FastAPI", "icon": "bx-server" },
@@ -82,25 +82,24 @@ const data = {
                 "github": "https://github.com/AsiifShahzad/job-market-analytics.git"
             },
             "features": [
-                { "title": "Real-Time Job Market Analytics", "desc": "Processes 2000+ jobs with 100+ skills extracted per workflow, maintaining <6 hour data freshness via 6-hour update cycles." },
-                { "title": "Hybrid NLP Skill Extraction", "desc": "Combined dictionary matching and fuzzy matching achieving high recall while reducing false positives through intelligent filtering." },
-                { "title": "Statistical Insight Engine", "desc": "Trend detection with 7-day window analysis, sample-size filtering for noise reduction, and bias-controlled salary analysis avoiding outlier distortions." },
-                { "title": "Comprehensive Market Intelligence", "desc": "Skill demand ranking by category, high-paying skill identification, skill co-occurrence analysis, and remote vs on-site market comparisons." },
-                { "title": "Production-Grade Reliability", "desc": "Automated ingestion with deduplication and retry logic, incremental updates, pipeline tracking, and PostgreSQL persistence at scale." }
+                { "title": "Automated Job Ingestion", "desc": "Scheduled pipeline pulls fresh listings every 6 hours with deduplication and retry handling." },
+                { "title": "Hybrid NLP Skill Extraction", "desc": "Dictionary + fuzzy matching with synonym normalization and false-positive filtering." },
+                { "title": "Statistical Insight Engine", "desc": "7-day rolling trend detection with sample-size filtering to avoid misleading signals from sparse data." },
+                { "title": "Market Intelligence Dashboard", "desc": "Skill demand by category, high-paying skills, co-occurrence analysis, and remote vs on-site breakdown." },
+                { "title": "PostgreSQL Backend", "desc": "Relational schema with indexed queries for fast aggregation across thousands of job records." }
             ],
             "metrics": [
                 { "label": "Jobs Processed", "value": "2,000+" },
-                { "label": "Skills Extracted", "value": "100+" },
+                { "label": "Skills Tracked", "value": "100+" },
                 { "label": "Update Frequency", "value": "6 hours" },
-                { "label": "Data Freshness", "value": "<6 hours" }
+                { "label": "Trend Window", "value": "7 days" }
             ]
         },
-         
         {
             "id": "movie-revenue-intelligence",
             "title": "ML Revenue Prediction System",
-            "summary": "Engineered end-to-end ML system predicting movie box office with R² 0.84, deployed as production FastAPI service handling 1000+ requests/day.",
-            "description": "Built complete ML prediction system end-to-end from data engineering through production deployment. Architecture: Raw Movie Data → Feature Engineering (15+ engineered signals) → Model Training & Comparison (4 models evaluated) → Hyperparameter Optimization → XGBoost Selection → FastAPI Deployment → Docker Containerization. Feature Engineering Strategy: Genre popularity (historical avg revenue normalized by inflation), Cast/Director success ratio (win rate in similar budget ranges avoiding survivorship bias), Studio strength metric (studio's historical avg revenue with smoothing), Release seasonality (12-month cyclical encoding via sine/cosine), Budget-adjusted indicators (revenue-per-dollar by peer movies). Model Comparison: Baseline Linear Regression (R²: 0.42) → Random Forest (R²: 0.68) → LightGBM (R²: 0.83) → XGBoost (R²: 0.84). Selected XGBoost: 2% accuracy gain + 5% faster inference trade-off. Hyperparameter tuning: GridSearchCV over 192 combinations, 5-fold stratified cross-validation by budget tier. Production: FastAPI endpoints for single-movie prediction and hit/flop classification (binary threshold), <100ms inference latency per request, Docker containerization, 99.8% uptime. Impact: Revenue prediction ±15% average error, 91% classification accuracy, saves 40 hours/month analytics team time previously spent on manual research.",
+            "summary": "Built an end-to-end ML system predicting movie box office revenue, evaluated across 4 models with XGBoost achieving R² 0.84 — deployed as a FastAPI service.",
+            "description": "Built a complete ML pipeline from raw data to deployed prediction API. Architecture: Raw Movie Data → Feature Engineering → Model Training & Comparison (4 models) → Hyperparameter Tuning → XGBoost → FastAPI → Docker. Feature engineering included genre popularity (normalized historical averages), cast/director success rates by budget range, studio strength with Laplace smoothing, and release seasonality encoded as sine/cosine. Model comparison: Linear Regression (R² 0.42) → Random Forest (R² 0.68) → LightGBM (R² 0.81) → XGBoost (R² 0.84). Chose XGBoost for best accuracy and fast inference. Tuned with GridSearchCV over ~192 combinations using 5-fold cross-validation. Deployed as a FastAPI service with single-movie prediction and hit/flop classification endpoints.",
             "techStack": [
                 { "name": "Python", "icon": "bxl-python" },
                 { "name": "FastAPI", "icon": "bx-server" },
@@ -114,21 +113,19 @@ const data = {
                 "github": "https://github.com/AsiifShahzad/AI-Movie-Hit-Predictor.git"
             },
             "features": [
-                { "title": "Feature Engineering at Scale", "desc": "15+ domain-driven features: genre popularity, cast/director success ratios, studio strength, seasonality, budget-adjusted signals." },
-                { "title": "Model Selection via Experimentation", "desc": "Evaluated 4 models (Linear, RF, XGBoost, LightGBM) with hyperparameter optimization; selected XGBoost for 2% accuracy + 5% latency trade-off." },
-                { "title": "Production Deployment", "desc": "FastAPI service with <100ms inference, binary classification endpoint, Docker containerization." },
-                { "title": "High Accuracy", "desc": "R² 0.84 explaining 84% of revenue variance, 91% hit/flop classification accuracy." },
-                { "title": "Business Impact", "desc": "Saves 40 hours/month for analytics team, 99.8% production uptime, processes 1000+ predictions/day." }
+                { "title": "Feature Engineering", "desc": "15+ domain-driven signals: genre popularity, cast/director win rates, studio strength, seasonality, budget-adjusted indicators." },
+                { "title": "Model Comparison", "desc": "Evaluated Linear Regression, Random Forest, LightGBM, and XGBoost — selected XGBoost for best accuracy and inference speed trade-off." },
+                { "title": "Hyperparameter Tuning", "desc": "GridSearchCV over ~192 combinations with 5-fold stratified cross-validation by budget tier." },
+                { "title": "FastAPI Deployment", "desc": "Two endpoints: revenue regression and binary hit/flop classification, containerized with Docker." },
+                { "title": "R² 0.84", "desc": "Best model explains 84% of revenue variance on the test set, with sub-100ms inference per request." }
             ],
             "metrics": [
-                { "label": "Accuracy (R²)", "value": "0.84" },
-                { "label": "Classification", "value": "91%" },
-                { "label": "Inference Time", "value": "<100ms" },
-                { "label": "Scale", "value": "1000/day" }
+                { "label": "Best R²", "value": "0.84" },
+                { "label": "Models Evaluated", "value": "4" },
+                { "label": "CV Folds", "value": "5" },
+                { "label": "Inference Time", "value": "<100ms" }
             ]
         }
-        
-
     ],
     "experience": [
         {
@@ -136,9 +133,9 @@ const data = {
             "role": "Python Developer Intern",
             "period": "Internship",
             "desc": [
-                "Optimized data processing pipelines using FastAPI, reducing query latency by 35% through batch processing and async execution.",
-                "Engineered backend services handling 100K+ daily records with Pandas/NumPy, improving data transformation performance.",
-                "Implemented code reviews framework improving team code quality and reducing production bugs by 28%."
+                "Worked on data processing pipelines using FastAPI and async Python, improving query performance through batch processing.",
+                "Helped build backend services handling large volumes of daily records using Pandas and NumPy.",
+                "Participated in code reviews and contributed to reducing recurring bugs in production workflows."
             ]
         },
         {
@@ -146,27 +143,27 @@ const data = {
             "role": "Data Scientist Intern",
             "period": "Internship",
             "desc": [
-                "Conducted exploratory data analysis on 500K+ records using Python, Pandas, SQL identifying 12 key market insights.",
-                "Built and evaluated 8 machine learning models with Scikit-learn achieving 86% classification accuracy on validation set.",
-                "Created data visualization dashboard using Matplotlib, Seaborn, Plotly reducing analysis time from 4 hours to 15 minutes per report.",
-                "Feature engineered 40+ signals for predictive models improving overall model performance by 22%."
+                "Analyzed 500K+ records using Python, Pandas, and SQL to surface market trends and data quality issues.",
+                "Trained and evaluated multiple ML models using Scikit-learn, reaching 86% classification accuracy on the validation set.",
+                "Built data visualization dashboards with Matplotlib, Seaborn, and Plotly that reduced manual reporting time significantly.",
+                "Engineered 40+ features for predictive models, improving overall model performance by ~22%."
             ]
         }
     ],
     "services": [
         {
             "title": "LLM Systems & Agentic AI",
-            "desc": "Building production-grade multi-agent systems, RAG pipelines, and LLM orchestration using LangGraph and LangChain.",
+            "desc": "Building multi-agent systems, RAG pipelines, and LLM orchestration using LangGraph and LangChain.",
             "icon": "bx-brain"
         },
         {
             "title": "Production ML Deployment",
-            "desc": "End-to-end ML systems: feature engineering, model selection, optimization, FastAPI deployment, and scaling.",
+            "desc": "End-to-end ML systems: feature engineering, model selection, FastAPI deployment, and Docker containerization.",
             "icon": "bx-server"
         },
         {
             "title": "Data Systems & ETL",
-            "desc": "Building automated data pipelines with Prefect, NLP processing, analytics platforms, and real-time dashboards.",
+            "desc": "Automated data pipelines, NLP-based processing, analytics platforms, and real-time dashboards.",
             "icon": "bx-line-chart"
         }
     ],
